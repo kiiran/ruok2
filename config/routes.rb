@@ -4,4 +4,13 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root to: 'pages#home'
+
+  resources :users do
+    resources :conversations_history, only: [:new, :create, :show, :destroy]
+  end
+
+  resources :users do
+    resources :group_memberships
+  end
+
 end
