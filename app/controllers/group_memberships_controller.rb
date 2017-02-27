@@ -3,6 +3,7 @@ class GroupMembershipsController < ApplicationController
   end
 
   def new
+    @group_membership = GroupMembership.new
   end
 
   def create

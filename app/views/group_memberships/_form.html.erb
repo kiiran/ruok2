@@ -1,0 +1,12 @@
+<%= simple_form_for [current_user, @group_membership] do |cg| %>
+  <%= cg.error_notification %>
+  <!-- po.input :product_id, collection: Product.all -->
+  <%= cg.input :user_id, value: current_user.id, as: :hidden %>
+
+
+  <%= cg.input :user, placeholder: "Armstrong- add more fields in simple form." %>
+  <%= cg.button :submit %>
+
+<% end %>
+
+
