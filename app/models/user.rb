@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  belongs_to :groups, through: :group_memberships
+  belongs_to :groups
   has_many :groups, through: :group_memberships
   has_many :conversation_histories
 end
