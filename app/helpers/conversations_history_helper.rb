@@ -1,0 +1,2 @@
+module ConversationsHistoryHelper
+end

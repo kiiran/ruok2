@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'conversation_history/index'
+
+  get 'conversation_history/new'
+
+  get 'conversation_history/show'
+
+  get 'conversation_history/create'
+
+  get 'conversation_history/update'
+
+  get 'conversation_history/edit'
+
+  get 'conversation_history/destroy'
+
   get 'group_memberships/show'
 
   get 'group_memberships/new'
@@ -16,8 +30,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users do
-    resources :conversations_history, only: [:new, :create, :show, :destroy]
+    resources :conversation_history, only: [:new, :create, :show, :destroy]
   end
+
+  resources :conversation_history, only: :new
 
   resources :users do
     resources :group_memberships
