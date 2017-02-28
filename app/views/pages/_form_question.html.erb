@@ -1,4 +1,4 @@
-<%= form_tag(new_conversation_history_path, :method => "get", id: "question-form") do %>
+<%= form_tag(new_conversation_history_path, :method => "get", class: "form-question") do %>
 
   <%= hidden_field_tag :question_id, params[:question_id] %>
   <%= hidden_field_tag :conversation_history_id, params[:conversation_history_id] %>
