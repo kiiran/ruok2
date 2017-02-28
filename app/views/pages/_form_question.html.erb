@@ -1,4 +1,6 @@
 <%= form_tag(new_conversation_history_path, :method => "get", id: "question-form") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "Search Games", size: 200 %>
-      <%= submit_tag "Send", :name => nil, class: "btn btn-primary" %>
-    <% end %>
+
+  <%= text_field_tag :answer, params[:answer], placeholder: "insert text here", class: "wide" %>
+  <%= submit_tag "Send", :name => nil, class: "btn btn-primary"%>
+
+<% end %>

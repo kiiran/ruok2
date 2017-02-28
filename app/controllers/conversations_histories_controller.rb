@@ -1,4 +1,4 @@
-class ConversationHistoryController < ApplicationController
+class ConversationHistoriesController < ApplicationController
 
 
   def index
