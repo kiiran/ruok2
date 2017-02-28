@@ -1,4 +1,6 @@
 class ConversationHistoriesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :new ]
+
   def index
     @convo_histories = ConversationHistory.all
   end
