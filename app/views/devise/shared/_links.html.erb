@@ -1,14 +1,27 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+<div class="row">
+  <div class="col-xs-6">
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: "login-form-help-links" %><br />
+    <% end -%>
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+      <%= link_to "Don't have an account?", new_registration_path(resource_name), class: "login-form-help-links" %>
+    <% end -%>
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "Already have an account?", new_session_path(resource_name), class: "login-form-help-links" %>
+    <% end -%>
+  </div>
+</div>
+
+<%- if devise_mapping.omniauthable? %>
+  <hr class="page-divider">
+  <h2 class="text-center">or</h2>
+  <div class="slightly-padded">
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to "<p style='font-family: Open sans; font-size: 16px; margin: 0; padding-left: 7px;'>Log in with<i class='fa fa-#{provider}' style='font-size: 18px'></i></p>".html_safe, omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook" %><br />
+    <% end -%>
+  </div>
 <% end -%>
 
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-<% end -%>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
@@ -18,8 +31,3 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
-<% end -%>
