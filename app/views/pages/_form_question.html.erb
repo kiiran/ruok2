@@ -1,5 +1,7 @@
 <%= form_tag(new_conversation_history_path, :method => "get", id: "question-form") do %>
 
+  <%= hidden_field_tag :question_id, params[:question_id] %>
+  <%= hidden_field_tag :conversation_history_id, params[:conversation_history_id] %>
   <%= text_field_tag :answer, params[:answer], placeholder: "insert text here", class: "wide" %>
   <%= submit_tag "Send", :name => nil, class: "btn btn-primary"%>
 
