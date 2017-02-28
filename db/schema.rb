@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228114426) do
+ActiveRecord::Schema.define(version: 20170228174139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,14 @@ ActiveRecord::Schema.define(version: 20170228114426) do
     t.string   "content"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "template_question_id"
     t.index ["conversation_history_id"], name: "index_questions_on_conversation_history_id", using: :btree
+    t.index ["template_question_id"], name: "index_questions_on_template_question_id", using: :btree
+  end
+
+  create_table "template_questions", force: :cascade do |t|
+    t.string "subject"
+    t.string "content"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,4 +96,5 @@ ActiveRecord::Schema.define(version: 20170228114426) do
   add_foreign_key "group_memberships", "groups"
   add_foreign_key "group_memberships", "users"
   add_foreign_key "questions", "conversation_histories"
+  add_foreign_key "questions", "template_questions"
 end

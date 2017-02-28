@@ -11,4 +11,5 @@ Rails.application.routes.draw do
     resources :group_memberships
   end
   resources :conversation_histories, only: :new
+  resources :template_questions, only: [:index, :show]
 end
