@@ -2,6 +2,7 @@
 #navbar {
   height: 60px;
   width: 100px;
+  z-index: 2;
 }
 
 .navbar {
@@ -109,7 +110,7 @@
   position: absolute;
   right: 14px;
   top: -2px;
-  z-index: 1;
+  z-index: 998;
 }
 .navbar-wagon-search-input {
   flex: 0 1 300px;
