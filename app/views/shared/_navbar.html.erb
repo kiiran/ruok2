@@ -33,8 +33,8 @@
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <%= link_to new_user_group_membership_path(current_user.id) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "New Membership") %>
               <% end %>
             </li>
             <li>
@@ -55,7 +55,7 @@
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Log in"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_in", default: "Post stuff"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "New Member"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Another link"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% end %>
