@@ -9,6 +9,6 @@ class Question < ApplicationRecord
       "How are you feeling?",
       "What's on your mind?"
     ]
-    questions.sample
+    Question.new(content: questions.sample)
   end
 end
