@@ -1,9 +1,13 @@
-.btn-facebook {
-  padding: 8px;
+.btn-facebook,
+.btn-facebook:link,
+.btn-facebook:visited {
+  font-weight: bold;
+  padding: 11px 22px;
   border-radius: 4px;
   background-color: $facebook-blue-light;
   color: white;
   transition: all 0.2s ease;
+  margin: 5px;
 }
 
 .btn-facebook:hover {
@@ -26,6 +30,25 @@
   color: $brand-color;
   transition: all 0.2s ease;
 }
+.btn-brand-with-bg {
+  padding: 8px 20px;
+  background-color: $brand-color;
+  border-radius: 4px;
+  border: solid $brand-color 1.5px;
+  color: $gray-lighter;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.btn-brand-with-bg:hover {
+  color: white;
+  background-color: $brand-color;
+  transition: all 0.2s ease;
+  text-shadow: none;
+  border-color: $brand-color;
+}
+
 .btn-yellow {
   padding: 8px 20px;
   border-radius: 4px;
@@ -38,5 +61,18 @@
 
 .btn-yellow:hover {
   color: $yellow;
+  transition: all 0.2s ease;
+}
+
+.login-form-help-links {
+  font-size: 12px;
+  color: $gray;
+  float: right;
+  transition: all 0.2s ease;
+}
+
+.login-form-help-links:hover {
+  text-decoration: none;
+  color: $brand-color;
   transition: all 0.2s ease;
 }
