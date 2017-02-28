@@ -1,6 +1,10 @@
 class GroupMembershipsController < ApplicationController
+  def index
+    show
+  end
+
   def show
-    GroupMembership.all
+    @memberships = GroupMembership.all
   end
 
   def new
