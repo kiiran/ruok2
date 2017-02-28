@@ -35,24 +35,12 @@
     </div>
 
   </div>
-
-
-
-  <div class="container" style="border-style: dashed;">
-    <div style="margin-top: 100vh;">
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-          <div class="home-question">
-            <%= render 'form_question' %>
-          </div>
-          <div class="home-question">
-            <%= render 'form_question' %>
-          </div>
-          <div class="home-question">
-            <%= render 'form_question' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      console.log("AHHAHAHA")
+    });
+  <% end %>
+<% end %>
