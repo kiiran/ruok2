@@ -6,7 +6,7 @@
       <% else %>
         <h1><%= current_user.first_name.nil? ? "Hey there!" : "Hey there, " + current_user.first_name + "!" %></h1>
       <% end %>
-      <h2><%= @first_question.content %></h2>
+      <h2><%= Question.sample_of_subject("generic first question").content %></h2>
 
       <!-- Let's add the reply box here  -->
 
