@@ -1,6 +1,6 @@
 /* Main class */
 #navbar {
-  height: 50px;
+  height: 60px;
   width: 100px;
 }
 
@@ -39,14 +39,15 @@
   justify-content: space-between;
   position: absolute;
   right: 30px;
-  top: 7px;
+  top: 15px;
 }
 
 /* Navbar item */
 .navbar-wagon-item {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 20px;
+  padding: 5px;
+  margin: 0 20px;
 }
 
 .navbar-wagon-item > .dropdown-mobile {
@@ -63,10 +64,15 @@
 .navbar-wagon-link {
   color: #616668;
   font-size: 14px;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s;
 }
 .navbar-wagon-link:hover {
   color: $brand-color;
   text-decoration: none;
+  border-bottom: 2px solid $brand-color;
+  transition: border-bottom 0.7s;
 }
 
 /* Navbar right button */
@@ -156,58 +162,46 @@
 
 /* awesome links */
 /* Effect 21: borders slight translate */
-.awesome-link a {
-  padding: 10px;
-  color: $brand-dark;
-  font-weight: 700;
-  text-shadow: none;
-  -webkit-transition: color 0.3s;
-  -moz-transition: color 0.3s;
-  transition: color 0.3s;
-}
+// .navbar-wagon-link {
+//   padding: 10px;
+//   color: $gray;
+//   font-weight: 700;
+//   text-shadow: none;
+//   transition: color 0.3s;
+// }
 
-.awesome-link a::before,
-.awesome-link a::after {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #fff;
-  content: '';
-  opacity: 0;
-  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-  -moz-transition: opacity 0.3s, -moz-transform 0.3s;
-  transition: opacity 0.3s, transform 0.3s;
-  -webkit-transform: translateY(-10px);
-  -moz-transform: translateY(-10px);
-  transform: translateY(-10px);
-}
+// .navbar-wagon-link::before,
+// .navbar-wagon-link::after {
+//   position: absolute;
+//   left: 0;
+//   width: 100%;
+//   height: 2px;
+//   background: $brand-color;
+//   content: '';
+//   opacity: 0;
+//   transition: opacity 0.3s, transform 0.3s;
+//   transform: translateY(-10px);
+// }
 
-.awesome-link a::before {
-  top: 0;
-  -webkit-transform: translateY(-10px);
-  -moz-transform: translateY(-10px);
-  transform: translateY(-10px);
-}
+// .navbar-wagon-link::before {
+//   top: 0;
+//   transform: translateY(-10px);
+// }
 
-.awesome-link a::after {
-  bottom: 0;
-  -webkit-transform: translateY(10px);
-  -moz-transform: translateY(10px);
-  transform: translateY(10px);
-}
+// .navbar-wagon-link::after {
+//   bottom: 0;
+//   transform: translateY(10px);
+// }
 
-.awesome-link a:hover,
-.awesome-link a:focus {
-  color: $brand-color;
-}
+// .navbar-wagon-link:hover,
+// .navbar-wagon-link:focus {
+//   color: $brand-color;
+// }
 
-.awesome-link a:hover::before,
-.awesome-link a:focus::before,
-.awesome-link a:hover::after,
-.awesome-link a:focus::after {
-  opacity: 1;
-  -webkit-transform: translateY(0px);
-  -moz-transform: translateY(0px);
-  transform: translateY(0px);
-}
+// .navbar-wagon-link:hover::before,
+// .navbar-wagon-link:focus::before,
+// .navbar-wagon-link:hover::after,
+// .navbar-wagon-link:focus::after {
+//   opacity: 1;
+//   transform: translateY(0px);
+// }
