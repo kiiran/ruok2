@@ -46,3 +46,7 @@ questions_by_subject.each do |subject, questions|
   end
 end
 
+Group.create(name: "David the master")
+Group.create(name: "Filipe the master")
+Group.create(name: "Joao the master")
+

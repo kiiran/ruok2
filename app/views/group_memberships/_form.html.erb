@@ -1,12 +1,12 @@
-<%= simple_form_for [current_user, @group_membership] do |cg| %>
-  <%= cg.error_notification %>
+
+<%= simple_form_for [current_user, @group_membership] do |f| %>
+  <%= f.error_notification %>
   <!-- po.input :product_id, collection: Product.all -->
-  <%= cg.input :user_id, value: current_user.id, as: :hidden %>
+  <%= f.input :user_id, value: current_user.id, as: :hidden %>
 
-
-  <%= cg.input :user, placeholder: "Armstrong- add more fields in simple form." %>
-  <%= cg.button :submit %>
-
+  <%= f.input :group, collection: @groups %>
+  <%= f.button :submit %>
 <% end %>
 
 
+<%#= f.input :location,:collection => @locations,:label_method => :location_name,:value_method => :id,:label => "Location" ,:include_blank => false %>
