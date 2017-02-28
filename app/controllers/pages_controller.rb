@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @new_convo_history = ConversationHistory.new
-    # @question = Question.new(content: "How are you?")
-    @new_convo_history.questions.push(@question)
+    @first_question = Question.first_question
+    @new_convo_history.questions.push(@first_question)
   end
 end

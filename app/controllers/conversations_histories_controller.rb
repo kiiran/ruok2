@@ -8,6 +8,7 @@ class ConversationHistoriesController < ApplicationController
   end
 
   def show
+
     @convo_history = ConversationHistory.find(params[:id])
   end
 
@@ -21,5 +22,6 @@ class ConversationHistoriesController < ApplicationController
 
   def convo_params
     params.require(:conversation_history).permit(:positive_index, :negative_index, :user_id, :group_id)
+
   end
 end
