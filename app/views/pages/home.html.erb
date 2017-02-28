@@ -17,15 +17,15 @@
       <div>
         <div class="row">
           <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-            <div class="home-question">
+            <div class="home-question" id="q01">
               <h2><%= Question.sample_of_subject("generic_first_questions").content %></h2>
               <%= render 'form_question' %>
             </div>
-            <div class="home-question">
+            <div class="home-question" id="q02">
               <h2><%= Question.sample_of_subject("generic_second_questions").content %></h2>
               <%= render 'form_question' %>
             </div>
-            <div class="home-question">
+            <div class="home-question" id="q03">
               <h2><%= Question.sample_of_subject("generic_third_questions").content %></h2>
               <%= render 'form_question' %>
             </div>
@@ -40,7 +40,14 @@
 <%= content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-      console.log("AHHAHAHA")
+      $('#q02').hide();
+      $('#q03').hide();
+      $('#answer-submit').on('click', function(event){
+        event.preventDefault();
+        $('#q02').show();
+        console.log("AHHAHAHA");
+
+      });
     });
   <% end %>
 <% end %>
