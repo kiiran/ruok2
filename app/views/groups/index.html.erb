@@ -1,0 +1,31 @@
+<div class="wrapper text-center">
+  <h1>Your groups</h1>
+
+  <!-- Warning to show if search doesnt find anything: -->
+  <% if @groups.blank? %>
+    <h4>Sorry you are not a member of anny group.</h4>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <% @groups.each do |group| %>
+    <div class="col-xs-6 col-sm-4 col-md-3">
+      <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('unsplash.it/750/750')">
+        <div class="card-description">
+            <h2><%= group.name %></h2>
+            <p>Created at: <%= group.created_at %></p>
+            <p>Last updated: <%= group.updated_at %></p>
+          </div>
+        <%= link_to 'Show', group_path(group)%>
+        <%= link_to 'Edit', edit_group_path(group)%>
+        <%= link_to 'Delete', delete_group_path(group)%>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div class="wrapper text-center">
+  <%= link_to 'New group', new_group_path%>
+</div>
