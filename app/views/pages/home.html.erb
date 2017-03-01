@@ -42,12 +42,19 @@
     $(document).ready(function() {
       $('#q02').hide();
       $('#q03').hide();
-      $('#answer-submit').on('click', function(event){
+
+      $('.btn', '#q01').on('click', function(event){
         event.preventDefault();
         $('#q02').show();
-        console.log("AHHAHAHA");
-
+        console.log("Got question 2");
       });
+
+      $('.btn', '#q02').on('click', function(event){
+          event.preventDefault();
+          $('#q03').show();
+          console.log("Got question 3");
+
+        });
     });
   <% end %>
 <% end %>
