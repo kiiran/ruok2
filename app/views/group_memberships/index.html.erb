@@ -18,7 +18,8 @@
             <p>Created at: <%= membership.created_at %></p>
             <p>Last updated: <%= membership.updated_at %></p>
           </div>
-        <%= link_to '', user_group_path(id: membership.group_id)%>
+        <%= link_to "see group" ,user_group_path(id: membership.group_id) %>
+        <%= link_to "delete" , user_group_membership_path(id: membership.id), method: :delete %>
       </div>
     </div>
     <% end %>
