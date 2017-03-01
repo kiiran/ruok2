@@ -1,9 +1,7 @@
 <%= simple_form_for [current_user, @group_membership] do |f| %>
-  <%= f.error_notification %>
+  <%= f.error_notification%>
   <!-- po.input :product_id, collection: Product.all -->
-  <%= f.input :user_id, value: current_user.id, as: :hidden %>
-
-  <%= f.input :group, collection: @groups %>
+  <%= f.input :group_id, collection: @groups %>
   <%= f.button :submit %>
 <% end %>
 
