@@ -18,9 +18,13 @@
             <p>Created at: <%= group.created_at %></p>
             <p>Last updated: <%= group.updated_at %></p>
           </div>
-        <%= link_to '', group_path(group)%>
+        <%= link_to 'Show', group_path(group)%>
+        <%= link_to 'Edit', edit_group_path(group)%>
       </div>
     </div>
     <% end %>
   </div>
+</div>
+<div class="wrapper text-center">
+  <%= link_to 'New group', new_group_path%>
 </div>

@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
     @group.users << current_user
     @group.group_memberships.first.admin = true
     if @group.save
-      redirect_to user_group(@group)
+      redirect_to group_path(@group)
     else
       render :new
     end
