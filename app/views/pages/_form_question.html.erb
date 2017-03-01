@@ -2,7 +2,7 @@
 
   <%= hidden_field_tag :question_id, params[:question_id] %>
   <%= hidden_field_tag :conversation_history_id, params[:conversation_history_id] %>
-  <%= text_field_tag :answer, params[:answer], placeholder: "insert text here", class: "wide" %>
+  <%= text_field_tag :answer, params[:answer], placeholder: "insert text here", class: "wide", id: "answer-text" %>
   <%= submit_tag "Answer", :name => nil, class: "btn btn-primary", id: "answer-submit"%>
 
 <% end %>
