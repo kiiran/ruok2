@@ -8,7 +8,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  has_many :group_memberships
   has_many :groups, through: :group_memberships
+
   has_many :conversation_histories
 
   has_attachment :photo

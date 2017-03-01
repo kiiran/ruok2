@@ -1,4 +1,4 @@
-<%= simple_form_for [current_user, @group] do |f| %>
+<%= simple_form_for @group do |f| %>
   <%= f.error_notification %>
   <%= f.input :name, label: "Group Name" %>
   <%= f.button :submit %>

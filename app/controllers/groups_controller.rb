@@ -13,8 +13,8 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.member = current_user
-    @group.members.first.admin = true
+    @group.users << current_user
+    @group.group_memberships.first.admin = true
     if @group.save
       redirect_to user_group(@group)
     else
