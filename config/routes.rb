@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
   resources :conversation_histories, only: :new
   resources :template_questions, only: [:index, :show]
+  resources :answers, only: :create
 end
