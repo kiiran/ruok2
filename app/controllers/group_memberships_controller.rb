@@ -27,6 +27,8 @@ class GroupMembershipsController < ApplicationController
   end
 
   def destroy
+    @group_membership =GroupMembership.find(params[:id])
+    @group_membership.destroy
   end
 
 private
