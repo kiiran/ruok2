@@ -146,9 +146,10 @@
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: white !important;
+  color: $brand-color !important;
 }
 .navbar-wagon-dropdown-menu:before {
+  background-color: white;
   content: ' ';
   height: 10px;
   width: 10px;
