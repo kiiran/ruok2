@@ -59,12 +59,9 @@
           url: "/answers",
           data: parameters,
           success: function(data) {
-            console.log("Sent to answers controller");
+            console.log("Sent to answers_controller");
           }
         });
-
-        $('#q02').show();
-        console.log("Got question 2");
       });
 
       $('.btn', '#q02').on('click', function(event){
