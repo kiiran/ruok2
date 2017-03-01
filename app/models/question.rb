@@ -6,7 +6,7 @@ class Question < ApplicationRecord
 # ]
 
   belongs_to :conversation_history
-  has_one :answer
+  has_one :answer, dependent: :destroy
 
 
   def self.first_question

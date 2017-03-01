@@ -13,45 +13,28 @@ class GroupMembershipsController < ApplicationController
   end
 
   def create
-    if group_exits?.nil?
-      @group = group_obj_create
-      @group_membership.group_id = @group # it think this can be refracted #sng:Filipe
-      @group_membership = membership_params
-    else
-      @group = group_exits?
-      @group_membership.group_id = @group # it think this can be refracted #sng:Filipe
-      @group_membership = membership_params
-    end
+    @group_membership = GroupMembership.new(membership_params)
+    @group_membership.user_id = current_user.id
 
     if @group_membership.save
-      redirect_to user_group_memberships
+      redirect_to user_group_memberships_path
     else
       render :new
     end
   end
 
-
   def update
   end
 
   def destroy
+    @group_membership =GroupMembership.find(params[:id])
+    @group_membership.destroy
+    redirect_to user_group_memberships_path
   end
 
 private
   def membership_params
-    params.require(admin: params.admin, user_id: current_user.id)
+    params.require(:group_membership).permit(:group_id)
   end
 
-  def group_params
-    params.require(:name)
-  end
-
-  def group_exits?
-    Group.find(group_params.name)
-  end
-
-  def group_obj_create
-    @group = Group.new
-    @group.name = group_params.name
-  end
 end
