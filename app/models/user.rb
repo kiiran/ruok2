@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :groups, through: :group_memberships
   has_many :conversation_histories
 
+  has_attachment :photo
+
   # for faceboob authentication:
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
