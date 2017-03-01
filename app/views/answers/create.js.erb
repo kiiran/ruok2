@@ -1,0 +1,18 @@
+console.log("Im HEEEERE!!");
+console.log("<%= @answer.content %>");
+
+if ($('#q02').is(":visible")) {
+  console.log("Gone to question 2");
+  var questionThree = "<%= Question.sample_of_subject("generic_third_questions").content %>";
+  $('#q03').show();
+  $('h2','#q03').html(questionThree);
+} else {
+  console.log("Gone to question 2");
+  var questionTwo = "<%= Question.sample_of_subject("generic_second_questions").content %>";
+  $('#q02').show();
+  $('h2','#q02').html(questionTwo);
+};
+
+
+console.log("-- the end --");
+

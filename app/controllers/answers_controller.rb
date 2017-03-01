@@ -2,15 +2,27 @@ class AnswersController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create ]
 
   def create
-    # needs to receive question_id from home page
-    # create new answer with submituon from home page - store as content
-    @answer = Answer.new(content: text_received_from_homepage)
-    @answer.question = question_made_to_user_in_homepage
+    # needs to receive question_id and answer content from homepage:
+    content = params["text"]
+    question_id = params["question_id"].to_i
 
-    # get sentiment from answr model .get_sentiment - store as sentimnt analysis
-    @answer.sentiment_analysis = @answer.get_sentiment.label
+    @answer = Answer.new(content: content, question_id: question_id)
+    # result from the API:
+    sentiment_hash = @answer.get_sentiment
+    # set sentiment values in answer object:
+    @answer.pos = sentiment_hash[:pos]
+    @answer.neutral = sentiment_hash[:neutral]
+    @answer.neg = sentiment_hash[:neg]
     @answer.save
-    # redirect to questions controller
+
+    # find a question based on highest value (pos, neutral or negative)
+    # send question to homepage
+
+    # create a js file to help with rendering shit in the homepage:
+    respond_to do |format|
+      format.js
+    end
+
   end
 
 end

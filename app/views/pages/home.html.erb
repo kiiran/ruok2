@@ -22,14 +22,12 @@
               <h2><%= question_1.content %></h2>
               <%= render 'form_question' %>
             </div>
-            <div class="home-question" id="q02">
-              <% question_2 = Question.sample_of_subject("generic_first_questions") %>
-              <h2><%= question_2.content %></h2>
+            <div class="home-question" id="q02" style="display: none;">
+              <h2></h2>
               <%= render 'form_question' %>
             </div>
-            <div class="home-question" id="q03">
-              <% question_3 = Question.sample_of_subject("generic_first_questions") %>
-              <h2><%= question_3.content %></h2>
+            <div class="home-question" id="q03" style="display: none";>
+              <h2></h2>
               <%= render 'form_question' %>
             </div>
           </div>
@@ -43,8 +41,6 @@
 <%= content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
-      $('#q02').hide();
-      $('#q03').hide();
 
       $('.btn', '#q01').on('click', function(event){
         event.preventDefault();
@@ -59,20 +55,10 @@
           url: "/answers",
           data: parameters,
           success: function(data) {
-            console.log("Sent to answers controller");
+            console.log("Sent to answers_controller");
           }
         });
-
-        $('#q02').show();
-        console.log("Got question 2");
       });
-
-      $('.btn', '#q02').on('click', function(event){
-          event.preventDefault();
-          $('#q03').show();
-          console.log("Got question 3");
-
-        });
     });
 
   <% end %>
