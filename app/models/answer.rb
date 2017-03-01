@@ -14,6 +14,14 @@ class Answer < ApplicationRecord
       "language" => "english",
       "text" => @text
     }
+    sentiment_hash = {
+      pos: response.body["probability"]["pos"],
+      neutral: response.body["probability"]["neutral"],
+      neg: response.body["probability"]["neg"],
+      label: response.body["label"]
+    }
+
+
 
   end
 end
