@@ -29,6 +29,7 @@ class GroupMembershipsController < ApplicationController
   def destroy
     @group_membership =GroupMembership.find(params[:id])
     @group_membership.destroy
+    redirect_to user_group_memberships_path
   end
 
 private
