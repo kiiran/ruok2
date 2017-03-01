@@ -20,7 +20,7 @@
           </div>
         <%= link_to 'Show', group_path(group)%>
         <%= link_to 'Edit', edit_group_path(group)%>
-        <%= link_to 'Delete', delete_group_path(group)%>
+        <%= link_to 'Delete', group_path(group), method: :delete%>
       </div>
     </div>
     <% end %>
