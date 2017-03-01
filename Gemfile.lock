@@ -46,6 +46,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     arel (7.1.4)
     autoprefixer-rails (6.7.5)
       execjs
@@ -109,6 +110,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    json (1.8.6)
     jwt (1.5.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -225,9 +227,16 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.1.0)
       execjs (>= 0.3.0, < 3)
+    # installed by cloudinary - potential for bugs
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
+    # installed by diogo for the sentiment analysis api
+    unirest (1.1.2)
+      addressable (~> 2.3.5)
+      json (~> 1.8.1)
+      rest-client (~> 1.6.7)
+    # -----------------------
     warden (1.2.7)
       rack (>= 1.0)
     websocket-driver (0.6.5)
@@ -265,6 +274,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
+  unirest
 
 RUBY VERSION
    ruby 2.3.3p222

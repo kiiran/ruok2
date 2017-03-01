@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'unirest'
 gem 'redis'
 gem "pundit"
 gem 'cloudinary', '1.1.7'
