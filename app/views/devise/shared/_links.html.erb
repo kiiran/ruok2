@@ -12,16 +12,6 @@
   </div>
 </div>
 
-<%- if devise_mapping.omniauthable? %>
-  <hr class="page-divider">
-  <h2 class="text-center">or</h2>
-  <div class="slightly-padded">
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "<p style='font-family: Open sans; font-size: 16px; margin: 0; padding-left: 7px;'>Log in with<i class='fa fa-#{provider}' style='font-size: 18px'></i></p>".html_safe, omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook" %><br />
-    <% end -%>
-  </div>
-<% end -%>
-
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />

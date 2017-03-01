@@ -1,0 +1,14 @@
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <hr class="page-divider">
+    <div class="slightly-padded text-center">
+      <h4 class="text-center">with <%= provider.capitalize %></h4>
+      <% if params[:controller] == "devise/registrations" %>
+      <%= link_to "<p style='font-family: Open sans; font-size: 16px; margin: 0; padding-left: 7px;'>Sign up with<i class='fa fa-#{provider}' style='font-size: 18px'></i></p>".html_safe, omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook" %><br />
+      <% else %>
+      <%= link_to "<p style='font-family: Open sans; font-size: 16px; margin: 0; padding-left: 7px;'>Log in with<i class='fa fa-#{provider}' style='font-size: 18px'></i></p>".html_safe, omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook" %><br />
+      <% end %>
+    </div>
+  <% end -%>
+  <hr class="page-divider">
+<% end -%>

@@ -227,16 +227,13 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.1.0)
       execjs (>= 0.3.0, < 3)
-    # installed by cloudinary - potential for bugs
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    # installed by diogo for the sentiment analysis api
     unirest (1.1.2)
       addressable (~> 2.3.5)
       json (~> 1.8.1)
       rest-client (~> 1.6.7)
-    # -----------------------
     warden (1.2.7)
       rack (>= 1.0)
     websocket-driver (0.6.5)
