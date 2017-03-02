@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   #   raise
   # end
 
+  def profile
+    @user = current_user
+  end
+
 
   # def create
   #   raise
