@@ -1,9 +1,11 @@
-<%= simple_form_for [current_user, @group_membership] do |f| %>
+<%= simple_form_for [@group, @group_membership] do |f| %>
   <%= f.error_notification%>
   <!-- po.input :product_id, collection: Product.all -->
-  <%= f.input :group_id, collection: @groups %>
+  <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email)%>
   <%= f.button :submit %>
 <% end %>
 
 
 <%#= f.input :location,:collection => @locations,:label_method => :location_name,:value_method => :id,:label => "Location" ,:include_blank => false %>
+
+

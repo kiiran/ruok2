@@ -1,40 +1,47 @@
 class GroupMembershipsController < ApplicationController
-  def index
-    show
-  end
+# Doses are memberships
+# memberships are a collection of the user associated groups
+  before_action :set_group, except: [:index]
+  before_action :set_group_membership, only: [:destroy]
 
-  def show
-    @memberships = GroupMembership.all
+
+  def index
+    @group_memberships = GroupMembership.all
+    @groups = Group.all
   end
 
   def new
     @group_membership = GroupMembership.new
-    @groups = Group.all
   end
 
   def create
-    @group_membership = GroupMembership.new(membership_params)
-    @group_membership.user_id = current_user.id
+    # @group_membership = GroupMembership.new(group_membership_params)
+    # @group_membership.group = @group
+    @group_membership = @group.group_memberships.build(group_membership_params)
 
     if @group_membership.save
-      redirect_to user_group_memberships_path
+      redirect_to group_path(@group)
     else
       render :new
     end
   end
 
-  def update
-  end
-
   def destroy
-    @group_membership =GroupMembership.find(params[:id])
+    @group = @group_membership.group
     @group_membership.destroy
-    redirect_to user_group_memberships_path
+    redirect_to group_path(@group)
   end
 
-private
-  def membership_params
-    params.require(:group_membership).permit(:group_id)
+  private
+  def set_group
+    @group = Group.find(params[:group_id])
   end
 
+  def group_membership_params
+    params.require(:group_membership).permit(:user_id, :group_id, :admin)
+  end
+
+  def set_group_membership
+    @group_membership = GroupMembership.find(params[:id])
+  end
 end

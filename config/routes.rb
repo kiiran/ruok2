@@ -21,11 +21,13 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :show]
     resources :group_memberships
   end
+
   resources :conversation_histories, only: :new
   resources :template_questions, only: [:index, :show]
-
+  resources :groups do
+    resources :group_memberships
+  end
   resources :groups
-
   resources :answers, only: :create
 
   resources :statistics_controller, only: [:index, :show]

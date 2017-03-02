@@ -1,4 +1,5 @@
-<div style="padding: 0 5%;">
+
+<div class="wrapper text-center" style="padding: 0 5%;">
   <% if current_user.first_name.nil? %>
   <h1 class="dark-text">'Ello there, mate!</h1>
   <% else %>
@@ -19,9 +20,9 @@
   $(tabSelector).removeClass('tab-content-hide');
 });
 });
-<% end %>
-<% end %>
-
+  <% end %>
+  <% end %>
+</div>
 
 <div class="tabs">
   <a class="tab active" data-target="#your-groups" href="#">
@@ -42,20 +43,29 @@
   <div class="container" id="your-groups" >
     <div class="row">
       <h3 class="dark-text">Your Groups:</h3>
-      <% @memberships.each do |membership| %>
-      <div class="col-xs-6 col-sm-4 col-md-3">
-        <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('unsplash.it/750/750')">
-          <div class="card-description">
-            <h2><%= membership.group.name %></h2>
-            <p>Created at: <%= membership.created_at %></p>
-            <p>Last updated: <%= membership.updated_at %></p>
-          </div>
-          <div style= "position:absolute;bottom: 0;right: 0;"><%=  link_to "Group Stats" , user_group_path(id: membership.group_id), class: "btn btn-orange" %>
-          </div>
-          <div style= "position:absolute;bottom: 0;right: 0;"><%=  link_to "delete" , user_group_membership_path(id: membership.id), method: :delete, class: "btn btn-orange" %>
+      <% if !@groups.nil? %>
+        <% @groups.each do |group| %>
+        <div class="col-xs-6 col-sm-4 col-md-3">
+          <% if !group.photo.nil? %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+          url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
+          <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+            <% end %>
+            <div class="card-category">
+              <p><%= group.name %></p>
+            </div>
+            <div class="card-description">
+              <%= link_to 'Show', group_path(group)%>
+              <%= link_to 'Edit', edit_group_path(group)%>
+              <%= link_to 'Delete', group_path(group), method: :delete %>
+            </div>
           </div>
         </div>
-      </div>
+        <% end %>
+      <% else %>
+        <p> You have no groups. Sad.</p>
+        <p> <%= link_to 'Add a new group', new_group_path%></p>
       <% end %>
     </div>
 
