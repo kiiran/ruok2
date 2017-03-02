@@ -40,6 +40,6 @@ class User < ApplicationRecord
   private
 
   def welcome_email
-    UserMailer.welcome(self.id).deliver_later
+    UserMailer.welcome(self).deliver_later
   end
 end
