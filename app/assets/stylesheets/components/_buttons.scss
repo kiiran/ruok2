@@ -35,13 +35,14 @@
   background-color: $brand-color;
   border-radius: 4px;
   border: solid $brand-color 1.5px;
-  color: $gray-lighter;
+  color: $brand-light;
   font-size: 14px;
   font-weight: bold;
   transition: all 0.2s ease;
 }
 
-.btn-brand-with-bg:hover {
+.btn-brand-with-bg:hover,
+.btn-brand-with-bg:visited {
   color: white;
   background-color: $brand-color;
   transition: all 0.2s ease;
