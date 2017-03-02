@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'statistics_controller/index'
+
+  get 'statistics_controller/show'
+
     # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.super_admin } do
@@ -25,4 +29,6 @@ Rails.application.routes.draw do
   end
   resources :groups
   resources :answers, only: :create
+
+  resources :statistics_controller, only: [:index, :show]
 end
