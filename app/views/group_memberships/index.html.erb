@@ -8,19 +8,19 @@
   <h4 class="dark-text">Here's your profile</h4>
   <h4 class="dark-text"> Here you can see your Groups, Data and update your profile</h4>
   <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-  $(function(){
-  $(".tab").on("click", function(e){
-  $(".tab").removeClass('active');
-  $(this).addClass('active');
+    <%= javascript_tag do %>
+      $(function(){
+        $(".tab").on("click", function(e){
+          $(".tab").removeClass('active');
+          $(this).addClass('active');
 
-  $(".container").addClass('tab-content-hide');
-  var tabSelector = $(this).data('target');
+          $(".container").addClass('tab-content-hide');
+          var tabSelector = $(this).data('target');
 
-  $(tabSelector).removeClass('tab-content-hide');
-});
-});
-  <% end %>
+          $(tabSelector).removeClass('tab-content-hide');
+        });
+      });
+    <% end %>
   <% end %>
 </div>
 

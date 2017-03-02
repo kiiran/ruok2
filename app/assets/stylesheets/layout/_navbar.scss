@@ -1,7 +1,7 @@
 /* Main class */
 #navbar {
   height: 60px;
-  width: 100px;
+  width: 100%;
   z-index: 2;
 }
 
@@ -30,7 +30,7 @@
   height: 40px;
   position: absolute;
   left: 30px;
-  top: 5px;
+  top: 10px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -53,7 +53,7 @@
 
 .navbar-wagon-item > .dropdown {
   position: absolute;
-  top: 5px;
+  top: -5px;
   right: 2%;
 }
 
