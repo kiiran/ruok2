@@ -20,6 +20,9 @@
   $(tabSelector).removeClass('tab-content-hide');
 });
 });
+  <% end %>
+  <% end %>
+</div>
 
 <div class="tabs">
   <a class="tab active" data-target="#your-groups" href="#">
@@ -35,31 +38,35 @@
     <p>Hey you</p>
   </a>
 </div>
-  
+
 <div class="wrapper">
   <div class="container" id="your-groups" >
     <div class="row">
       <h3 class="dark-text">Your Groups:</h3>
-      
-      <% @groups.each do |group| %>
-      <div class="col-xs-6 col-sm-4 col-md-3">
-      <% if !group.photo.nil? %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-        url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
-      <% else %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-      <% end %>
-          <div class="card-category">
-            <p><%= group.name %></p>
-          </div>
-          <div class="card-description">
-            <%= link_to 'Show', group_path(group)%>
-            <%= link_to 'Edit', edit_group_path(group)%>
-            <%= link_to 'Delete', group_path(group), method: :delete %>
+      <% if !@groups.nil? %>
+        <% @groups.each do |group| %>
+        <div class="col-xs-6 col-sm-4 col-md-3">
+          <% if !group.photo.nil? %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+          url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
+          <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+            <% end %>
+            <div class="card-category">
+              <p><%= group.name %></p>
+            </div>
+            <div class="card-description">
+              <%= link_to 'Show', group_path(group)%>
+              <%= link_to 'Edit', edit_group_path(group)%>
+              <%= link_to 'Delete', group_path(group), method: :delete %>
+            </div>
           </div>
         </div>
-      </div>
-      <% end %>  
+        <% end %>
+      <% else %>
+        <p> You have no groups. Sad.</p>
+        <p> <%= link_to 'Add a new group', new_group_path%></p>
+      <% end %>
     </div>
 
     <div class="container tab-content-hide" id="your-stats">
