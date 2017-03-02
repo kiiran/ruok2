@@ -82,15 +82,19 @@
   <div class="container tab-content-hide" id="profile-info" >
     <div class="row">
       <h3 class="dark-text">My name is <%= @user.first_name %> <%= @user.last_name %>!</h3>
-    <% if !@user.facebook_picture_url.nil? %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-      url('<%= cl_image_path @user.facebook_picture_url, gravity: "south" %>')"></div>
-    <% elsif !@user.photo.nil? %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-      url('<%= cl_image_path @user.photo.path, gravity: "south" %>')"></div>
-    <% else %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-     <% end %></div>
+      <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
+        <% if !@user.facebook_picture_url.nil? %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url('<%= cl_image_path @user.facebook_picture_url, gravity: "south" %>')"></div>
+      <% elsif !@user.photo.nil? %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url('<%= cl_image_path @user.photo.path, gravity: "south" %>')"></div>
+      <% else %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+       <% end %>
+       </div>
+    </div>
+
 
     <p>Contact-me at: <%= @user.email %></p>
       <!-- link_to 'Sell your game', new_user_product_offer_path, {class: 'btn btn-lg btn-warning'} -->
