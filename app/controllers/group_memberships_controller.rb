@@ -7,6 +7,7 @@ class GroupMembershipsController < ApplicationController
 
   def index
     @group_memberships = GroupMembership.all
+    @groups = Group.all
   end
 
   def new
