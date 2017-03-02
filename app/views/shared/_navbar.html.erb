@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "placeholder-logo.png" %>
+    <%= image_tag "ruok-logo.png" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -29,10 +29,10 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% if !current_user.facebook_picture_url.nil? %>
+          <% if !current_user.photo.nil? %>
+            <%= cl_image_tag current_user.photo.path, width: 50, height: 50, gravity: :face, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% elsif !current_user.facebook_picture_url.nil? %>
             <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <% elsif !current_user.photo.nil? %>
-            <%= cl_image_tag current_user.photo.path, width: 30, height: 30, gravity: :face, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
             <%= image_tag 'default-user-image.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
