@@ -12,15 +12,20 @@
 
     <% @groups.each do |group| %>
     <div class="col-xs-6 col-sm-4 col-md-3">
-      <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('unsplash.it/750/750')">
+    <% if !group.photo.nil? %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+      url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
+    <% else %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+    <% end %>
+        <div class="card-category">
+          <p><%= group.name %></p>
+        </div>
         <div class="card-description">
-            <h2><%= group.name %></h2>
-            <p>Created at: <%= group.created_at %></p>
-            <p>Last updated: <%= group.updated_at %></p>
-          </div>
-        <%= link_to 'Show', group_path(group)%>
-        <%= link_to 'Edit', edit_group_path(group)%>
-        <%= link_to 'Delete', group_path(group), method: :delete %>
+          <%= link_to 'Show', group_path(group)%>
+          <%= link_to 'Edit', edit_group_path(group)%>
+          <%= link_to 'Delete', group_path(group), method: :delete %>
+        </div>
       </div>
     </div>
     <% end %>
