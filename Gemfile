@@ -16,6 +16,9 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 
+gem 'sidekiq'
+gem 'sidekiq-failures'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -27,6 +30,7 @@ gem 'autoprefixer-rails'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'letter_opener'
 
   gem 'pry-byebug'
   gem 'pry-rails'

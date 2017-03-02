@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/destroy'
+    # Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.super_admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   mount Attachinary::Engine => "/attachinary"
@@ -20,10 +20,9 @@ Rails.application.routes.draw do
 
   resources :conversation_histories, only: :new
   resources :template_questions, only: [:index, :show]
-
   resources :groups do
     resources :group_memberships
   end
-
+  resources :groups
   resources :answers, only: :create
 end

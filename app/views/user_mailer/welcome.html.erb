@@ -1,0 +1,30 @@
+<style>
+  .email-body{
+    margin-left: 15px;
+  }
+  .main-text{
+    text-align: left;
+    max-width: 750px;
+    margin-left: 15px;
+  }
+</style>
+
+<div class="email-body">
+  <h1>Hi <%= @user.first_name %>!</h1>
+  <h3>Thanks for signing up to the R.U.O.K project.</h3>
+  <div class="main-text">
+    <p>This app is meant for doing sentiment analysis on yourself or on you team. It will help you keep records of your daily mood and make suggestions on how to improve it.</p>
+    <p><strong>This is just a prototype.</strong> Here's how it works:</p>
+    <ul>
+      <li>you answer the questions</li>
+      <li>each question is based os the sentiment of your previous answers (positve, neutral or negative)</li>
+      <li>in the end you will get a report with sugestions</li>
+      <li>when you come back it will also ask you about your previous conversations</li>
+    </ul>
+    <p>This is an ongoing project so you will certainly find a lot of bugs and missing features. Bear with us. For feedback and bug reporting email us at:</p>
+    <h5>diogofgr@gmail.com</h5>
+    <p>Cheers,</p>
+    <p>The Team</p>
+    <p>Ciaran, Diogo, Filipe and Pedro.</p>
+  </div>
+</div>
