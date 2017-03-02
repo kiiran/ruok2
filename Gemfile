@@ -27,6 +27,12 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+#charts gems
+gem "chartkick"
+gem 'active_median'
+gem 'groupdate'
+gem 'hightop'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
