@@ -20,6 +20,7 @@ class ConversationHistoriesController < ApplicationController
   end
 
   def destroy
+    ConversationHistory.destroy
   end
 
   def convo_params

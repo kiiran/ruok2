@@ -5,13 +5,13 @@ if ($('#q02').is(":visible")) {
   <!-- hide button that has been pressed: -->
   $('.btn', '#q02').css("visibility","hidden");
   <!-- show next question: -->
-  var questionThree = "<%= Question.sample_of_subject("generic_third_questions").content %>";
+  var questionThree = "<%= TemplateQuestion.sample_of_subject("generic_third_questions").content %>";
   $('#q03').fadeIn("slow");
   $('h2','#q03').html(questionThree);
 } else {
   console.log("Gone to question 2");
   $('.btn', '#q01').css("visibility","hidden");
-  var questionTwo = "<%= Question.sample_of_subject("generic_second_questions").content %>";
+  var questionTwo = "<%= TemplateQuestion.sample_of_subject("generic_second_questions").content %>";
   $('#q02').fadeIn("slow");
   $('h2','#q02').html(questionTwo);
 };

@@ -1,5 +1,7 @@
 # seed with first questions:
+Answer.destroy_all
 Question.destroy_all
+TemplateQuestion.destroy_all
 ConversationHistory.destroy_all
 GroupMembership.destroy_all
 Group.destroy_all
@@ -32,7 +34,7 @@ questions_by_subject = {
 #   generic_third_questions
 # ]
 
-home_user = User.create(email: "cant_be_blank@blank.com", password: "can't be blank", first_name: "can't be blank", last_name: "can't be blank")
+home_user = User.create(email: "home_user@dont-erase.com", password: "DO-NOT-ERASE-THIS-USER", first_name: "HOME", last_name: "USER")
 home_group = Group.new
 home_group_membership = GroupMembership.create(group: home_group, user: home_user)
 home_group.save
@@ -40,9 +42,7 @@ home_conversations = ConversationHistory.create(user: home_user, group: home_gro
 
 questions_by_subject.each do |subject, questions|
   questions.each do |question|
-      q01 = Question.new(content: question, subject: subject )
-      q01.conversation_history = home_conversations
-      q01.save
+      q01 = TemplateQuestion.create(content: question, subject: subject )
   end
 end
 
