@@ -3,7 +3,9 @@ class PagesController < ApplicationController
 
   def home
     @new_convo_history = ConversationHistory.new
-    @first_question = Question.first_question
-    @new_convo_history.questions.push(@first_question)
+    @new_convo_history.user = User.first
+    @new_convo_history.save
+    # @first_question = TemplateQuestion.first_question
+    # @new_convo_history.questions.push(@first_question)
   end
 end

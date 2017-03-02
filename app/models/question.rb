@@ -1,26 +1,16 @@
 class Question < ApplicationRecord
-# subjects = [
-#   "generic first question",
-#   "generic second question",
-#   "generic third question"
-# ]
 
   belongs_to :conversation_history
   has_one :answer, dependent: :destroy
+  belongs_to :template_question
 
-
-  def self.first_question
-    questions = [
-        "How are you today?",
-        "What are you up to?",
-        "How are you feeling?",
-        "What's on your mind?"
-      ]
-    Question.new(content: questions.sample)
-  end
-
-  def self.sample_of_subject(subject)
-    Question.where(subject: subject).sample
+  def self.make_from(template_question)
+    question = Question.new
+    question.subject = template_question.subject
+    question.content = template_question.content
+    question.template_question = template_question
+    question.save
+    question
   end
 end
 
