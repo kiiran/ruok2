@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    redirect_to groups_path
+    redirect_to current_user_profile_path
   end
 
 private
