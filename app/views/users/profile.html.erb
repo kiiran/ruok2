@@ -43,8 +43,8 @@
   <div class="container" id="your-groups" >
     <div class="row">
       <h3 class="dark-text">Your Groups:</h3>
-      <% if !@user.groups.blank? %>
-        <% @user.groups.each do |group| %>
+      <% if !current_user.groups.blank? %>
+        <% current_user.groups.each do |group| %>
         <div class="col-xs-6 col-sm-4 col-md-3">
           <% if !group.photo.nil? %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -57,8 +57,8 @@
             </div>
             <div class="card-description">
               <%= link_to 'Show', group_path(group)%>
-              <%= link_to 'Edit', edit_group_path(group)%>
-              <%= link_to 'Delete', group_path(group), method: :delete %>
+              <%= link_to 'Edit', edit_group_path(group) if current_user == group.users.first%>
+              <%= link_to 'Delete', group_path(group), method: :delete if current_user == group.users.first %>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
       <% end %>
     </div>
       <div class="wrapper text-center">
-          <%= link_to 'New group', new_group_path%>
+          <%= link_to 'New group', new_group_path %>
         </div>
 
     <div class="container tab-content-hide" id="your-stats">
