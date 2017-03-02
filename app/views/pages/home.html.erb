@@ -42,22 +42,28 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
 
-      $('.btn', '#q01').on('click', function(event){
-        event.preventDefault();
+      $('.btn').on('click', function(event){
+        <!-- if id03 not showing: -->
+        if ($('#q03').is(":visible")) {
+          console.log("Final question. Redirecting to results...");
+        } else {
 
-        console.log($('#answer-text', '#q01').val());
-        var parameters = {
-          "text": $('#answer-text', '#q01').val(),
-          "question_id": "<%= question_1.id %>"
-        }
-        $.ajax({
-          type: "POST",
-          url: "/answers",
-          data: parameters,
-          success: function(data) {
-            console.log("Sent to answers_controller");
+          event.preventDefault();
+
+          console.log($('#answer-text', '#q01').val());
+          var parameters = {
+            "text": $('#answer-text', '#q01').val(),
+            "question_id": "<%= question_1.id %>"
           }
-        });
+          $.ajax({
+            type: "POST",
+            url: "/answers",
+            data: parameters,
+            success: function(data) {
+              console.log("Sent to answers_controller");
+            }
+          });
+        }
       });
     });
 
