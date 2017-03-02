@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: :show
   # def index
   #   redirect_to new_user_session_path
   # end
@@ -25,16 +25,21 @@ class UsersController < ApplicationController
   #     render :new
   #   end
   # end
-
+  def show
+  end
 
 
   # def destroy
   # end
 
 
-  # private
+  private
 
   # def user_params
   #   params.require(:user).permit(:first_name, :last_name, :email, :photo)
   # end
+  def set_user
+    @user = User.find(params[:id])
+  end
+
 end

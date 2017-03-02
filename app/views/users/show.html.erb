@@ -1,0 +1,16 @@
+
+<div class="wrapper text-center" style="padding: 0 5%;">
+
+  <h1 class="dark-text">My name is <%= @user.first_name %> <%= @user.last_name %>!</h1>
+  <% if !@user.facebook_picture_url.nil? %>
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+    url('<%= cl_image_path @user.facebook_picture_url, gravity: "south" %>')"></div>
+  <% elsif !@user.photo.nil? %>
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+    url('<%= cl_image_path @user.photo.path, gravity: "south" %>')"></div>
+  <% else %>
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+   <% end %></div>
+
+  <p>Contact-me at: <%= @user.email %></p>
+</div>
