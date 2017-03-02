@@ -1,6 +1,19 @@
 class Answer < ApplicationRecord
   belongs_to :question
 
+  def self.new_with_sentiment(answer_content, question_object)
+    answer = Answer.new(content: answer_content)
+    answer.question = question_object
+    # result from the API:
+    sentiment_hash = answer.get_sentiment
+    answer.pos = sentiment_hash[:pos]
+    answer.neutral = sentiment_hash[:neutral]
+    answer.neg = sentiment_hash[:neg]
+
+    answer.save
+    answer
+  end
+
   def get_sentiment
     @text = self.content
     # These code snippets use an open-source library. http://unirest.io/ruby
@@ -20,8 +33,5 @@ class Answer < ApplicationRecord
       neg: response.body["probability"]["neg"],
       label: response.body["label"]
     }
-
-
-
   end
 end

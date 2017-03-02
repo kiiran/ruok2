@@ -4,6 +4,13 @@ class Question < ApplicationRecord
   has_one :answer, dependent: :destroy
   belongs_to :template_question
 
-
+  def self.make_from(template_question)
+    question = Question.new
+    question.subject = template_question.subject
+    question.content = template_question.content
+    question.template_question = template_question
+    question.save
+    question
+  end
 end
 
