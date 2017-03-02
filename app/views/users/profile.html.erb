@@ -56,8 +56,9 @@
           </div>
           <div class="card-description">
             <%= link_to 'Show', group_path(group)%>
-            <%= link_to 'Edit', edit_group_path(group) if current_user == group.users.first%>
-            <%= link_to 'Delete', group_path(group), method: :delete if current_user == group.users.first %>
+            <%= link_to 'Edit', edit_group_path(group) if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true
+%>
+            <%= link_to 'Delete', group_path(group), method: :delete if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin %>
           </div>
         </div>
       </div>
