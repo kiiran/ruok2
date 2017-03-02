@@ -2,7 +2,7 @@
   <h1>Your Memberships</h1>
 
   <!-- Warning to show if search doesnt find anything: -->
-  <% if @memberships.blank? %>
+  <% if @group_memberships.blank? %>
     <h4>Sorry you are not a member of anny group membership.</h4>
   <% end %>
 </div>
@@ -10,16 +10,16 @@
 <div class="container">
   <div class="row">
 
-    <% @memberships.each do |membership| %>
+    <% @group_memberships.each do |group_membership| %>
     <div class="col-xs-6 col-sm-4 col-md-3">
       <div class="card" style= "background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('unsplash.it/750/750')">
         <div class="card-description">
-            <h2><%= membership.group.name %></h2>
-            <p>Created at: <%= membership.created_at %></p>
-            <p>Last updated: <%= membership.updated_at %></p>
+            <h2><%= group_membership.group.name %></h2>
+            <p>Created at: <%= group_membership.created_at %></p>
+            <p>Last updated: <%= group_membership.updated_at %></p>
           </div>
-        <%= link_to "see group" ,user_group_path(id: membership.group_id) %>
-        <%= link_to "delete" , user_group_membership_path(id: membership.id), method: :delete %>
+        <%= link_to "see group" ,group_path(id: group_membership.group_id) %>
+        <%= link_to "delete membership" ,group_group_membership_path(group_membership.group.id, group_membership), method: :delete %>
       </div>
     </div>
     <% end %>
