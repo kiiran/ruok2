@@ -1,18 +1,21 @@
-console.log("Im HEEEERE!!");
-console.log("<%= @answer.content %>");
+console.log("answer content: <%= @answer.content %>");
 
 if ($('#q02').is(":visible")) {
-  console.log("Gone to question 2");
+  console.log("Gone to question 3");
+  <!-- hide button that has been pressed: -->
+  $('.btn', '#q02').css("visibility","hidden");
+  <!-- show next question: -->
   var questionThree = "<%= Question.sample_of_subject("generic_third_questions").content %>";
-  $('#q03').show();
+  $('#q03').fadeIn("slow");
   $('h2','#q03').html(questionThree);
 } else {
   console.log("Gone to question 2");
+  $('.btn', '#q01').css("visibility","hidden");
   var questionTwo = "<%= Question.sample_of_subject("generic_second_questions").content %>";
-  $('#q02').show();
+  $('#q02').fadeIn("slow");
   $('h2','#q02').html(questionTwo);
 };
 
 
-console.log("-- the end --");
+console.log("_end_of_cycle_");
 
