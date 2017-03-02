@@ -27,10 +27,10 @@
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
      <% end %>
         <div class="card-category">
-          <p><%= member.user.email %></p>
+          <%= member.user.email %>
         </div>
         <div class="card-description">
-          <p><%= link_to "delete membership", group_group_membership_path(member.group.id, member), method: :delete %></p>
+          <%= link_to "delete membership", group_group_membership_path(member.group.id, member), method: :delete %>
         </div>
       </div>
     </div>
@@ -38,10 +38,10 @@
   </div>
   <div class="row text-center">
     <div class = 'form col-md-4 col-md-offset-1'>
-      <p><%= link_to "Add Member", new_group_group_membership_path(@group.id) %></p>
+      <%= link_to "Add Member", new_group_group_membership_path(@group.id) if current_user == @group.users.first%>
     </div>
     <div class = 'form col-md-4 col-md-offset-1'>
-      <p><%= link_to "Go back", current_user_profile_path %></p>
+      <%= link_to "Go back", current_user_profile_path %>
     </div>
   </div>
 </div>
