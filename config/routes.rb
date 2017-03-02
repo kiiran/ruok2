@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
-  get 'statistics_controller/index'
+  mount Attachinary::Engine => "/attachinary"
 
-  get 'statistics_controller/show'
-
-    # Sidekiq Web UI, only for admins.
+  # Sidekiq Web UI, only for super_admins.
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.super_admin } do
     mount Sidekiq::Web => '/sidekiq'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  mount Attachinary::Engine => "/attachinary"
 
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
@@ -21,6 +18,8 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :show]
     resources :group_memberships
   end
+
+  get '/profile', to: 'users#profile', as: 'current_user_profile'
 
   resources :conversation_histories, only: :new
   resources :template_questions, only: [:index, :show]
