@@ -13,7 +13,7 @@
           <%= f.input :email, required: true %>
           <%= f.input :password, required: true, label: "Password" + (" (#{@minimum_password_length} characters minimum)" if @minimum_password_length) %>
           <%= f.input :password_confirmation, required: true %>
-          <%= f.input :photo, as: :attachinary, label: "Profile photo" %>
+          <%= f.input :photo, as: :attachinary, label_html: { class: "btn btn-default" }, input_html: { class: "hidden" }, label: "Profile photo?" %>
           <%= yield(:photo_upload_js) %>
         </div>
         <div class="col-xs-6">
