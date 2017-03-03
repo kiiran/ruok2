@@ -1,13 +1,23 @@
 /* Card design */
 .card {
-  height: 250px;
+  height: 150px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white; //MUDAR!
   position: relative;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  border-radius: 2px;
 }
+
+.card-list {
+  height: 30px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  color: white; //MUDAR!
+  position: relative;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
 .card-user {
   position: absolute;
   right: 10px;
@@ -42,4 +52,24 @@
 }
 .card-link:hover{
   opacity: 0.1;
+}
+
+.btn-card {
+  padding: 8px 20px;
+  background-color: $brand-color;
+  border-radius: 2px;
+  border: solid $brand-color 1.5px;
+  color: $brand-light;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.btn-card:hover,
+.btn-card:visited {
+  color: white;
+  background-color: $brand-color;
+  transition: all 0.2s ease;
+  text-shadow: none;
+  border-color: $brand-color;
 }
