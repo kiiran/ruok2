@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ruok? | <%= params[:action] %></title>
+    <title>R.U.O.K? | <%= params[:action] %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,8 +9,6 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-
-    <div id="wrapper">
       <div id="navbar">
         <%= render 'shared/navbar' %>
       </div>
@@ -24,7 +22,6 @@
           <%= render 'layouts/footer' %>
         </div>
       <% end %>
-    </div>
 
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>

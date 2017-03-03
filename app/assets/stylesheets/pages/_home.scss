@@ -2,3 +2,17 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+#circles{
+  color: white;
+  background-color: $brand-color;
+}
+.circles-container{
+  display: flex;
+}
+.circle-box{
+  text-align: center;
+  flex: 1 1 auto;
+  .fa {
+    font-size: 140px;
+  };
+}
