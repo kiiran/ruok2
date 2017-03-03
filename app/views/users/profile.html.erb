@@ -17,7 +17,7 @@
       <% end %>
       <h4 class="dark-text">This is your positivity per question! :) </h4>
       <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-      <%= pie_chart(Answer.group(:question_id).sum(:pos)) %>
+      <%= pie_chart(Answer.group(:question_id).sum(:pos), hight: "500px") %>
     </div>
   </div>
 </div>
@@ -107,7 +107,8 @@
 <div class="container tab-container tab-content-hide" id="your-stats">
   <div class="row">
     <h3 class="dark-text">Personal Stats!</h3>
-    <%= pie_chart(Answer.joins(:question).group(:subject).sum(:pos)) %>
+    <h2 class="dark-text"> This is your negativity per question. Sad. :(</h2>
+    <div class = "col-xs-12 col-sm-6""> <%= bar_chart(Answer.group(:question_id).sum(:neg), width: "600px") %> </div>
 
     <!-- link_to 'Sell your game', new_user_product_offer_path, {class: 'btn btn-lg btn-warning'} -->
   </div>
