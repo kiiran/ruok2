@@ -7,10 +7,6 @@
         <% else %>
           <h1><%= current_user.first_name.nil? ? "Hey there!" : "Hey there, " + current_user.first_name + "!" %></h1>
         <% end %>
-
-        <!-- Let's add the reply box here  -->
-
-
       </div>
     </div>
     <div class="container">
@@ -18,8 +14,8 @@
         <div class="row">
           <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             <div class="home-question" id="q01">
-              <% question_1 = TemplateQuestion.sample_of_subject("generic_first_questions") %>
-              <h2><%= question_1.content %></h2>
+              <% template_question_1 = TemplateQuestion.sample_of_subject("opening_question") %>
+              <h2><%= template_question_1.content %></h2>
               <%= render 'form_question' %>
             </div>
             <div class="home-question" id="q02" style="display: none;">
@@ -53,7 +49,8 @@
           console.log($('#answer-text', '#q01').val());
           var parameters = {
             "text": $('#answer-text', '#q01').val(),
-            "question_id": "<%= question_1.id %>"
+            "question_id": "<%= template_question_1.id %>",
+            "convo_history_id": "<%= @new_convo_history.id %>"
           }
           $.ajax({
             type: "POST",

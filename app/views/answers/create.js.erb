@@ -5,13 +5,25 @@ if ($('#q02').is(":visible")) {
   <!-- hide button that has been pressed: -->
   $('.btn', '#q02').css("visibility","hidden");
   <!-- show next question: -->
-  var questionThree = "<%= TemplateQuestion.sample_of_subject("generic_third_questions").content %>";
+  var questionThree = "<%= TemplateQuestion.sample_of_subject("neg-solution").content %>";
   $('#q03').fadeIn("slow");
   $('h2','#q03').html(questionThree);
+
 } else {
   console.log("Gone to question 2");
   $('.btn', '#q01').css("visibility","hidden");
-  var questionTwo = "<%= TemplateQuestion.sample_of_subject("generic_second_questions").content %>";
+  $('h1').fadeOut("slow").css("visibility","hidden");
+  <!-- var answer_one_analysis = "<%= @answer.label %>" -->
+  <!-- if (answer_one_analysis == "neg") { -->
+  <!--   ###Negative question -->
+  <!-- } else if (answer_one_analysis == "pos") { -->
+  <!--   ###Positive question -->
+  <!-- } else { -->
+  <!--   ###Neutral question_id -->
+  <!-- } -->
+
+  var questionTwo = "<%= TemplateQuestion.sample_of_subject('neg').content %>";
+
   $('#q02').fadeIn("slow");
   $('h2','#q02').html(questionTwo);
 };
