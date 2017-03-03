@@ -1,16 +1,39 @@
+
 <div class="wrapper">
   <div class="banner" style="background-image: linear-gradient(-225deg, rgba(45,125,92,0.6) 0%, rgba(45,125,92,0.6) 50%), url(<%= asset_path 'background-image.jpg' %>);">
     <div class="container">
       <div class="banner-content">
-        <% if current_user.nil? %>
-          <h1>Hey there!</h1>
-        <% else %>
-          <h1><%= current_user.first_name.nil? ? "Hey there!" : "Hey there, " + current_user.first_name + "!" %></h1>
-        <% end %>
+        <h1>Happy teams are productive teams!</h1>
+        <h2>The app for following your team's mood</h2>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div id="circles">
+    <ul class="circles-container">
+      <li class="circle-box">
+        <i class="fa fa-frown-o fa-2x" aria-hidden="true"></i>
+        <h4>Is someone in your team feeling down?</h4>
+      </li>
+      <li class="circle-box">
+        <i class="fa fa-trophy" aria-hidden="true"></i>
+        <h4>Are your team members not motivated?</h4>
+      </li>
+      <li class="circle-box">
+        <i class="fa fa-thumbs-o-down " aria-hidden="true"></i>
+        <h4>Is this hurting performance?</h4>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(45,125,92,0.6) 0%, rgba(45,125,92,0.6) 50%), url(<%= asset_path 'background-image.jpg' %>);">
     <div class="container">
-      <div>
+      <div class="banner-content">
+        <h2>Follow the team's mood on a weekly basis!</h2>
+        <h3>This is what team members would get:</h3>
         <div class="row">
           <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             <div class="home-question" id="q01">
@@ -22,7 +45,7 @@
               <h2></h2>
               <%= render 'form_question' %>
             </div>
-            <div class="home-question" id="q03" style="display: none";>
+            <div class="home-question" id="q03" style="display: none;">
               <h2></h2>
               <%= render 'form_question' %>
             </div>
@@ -33,6 +56,7 @@
 
   </div>
 </div>
+
 
 <%= content_for(:after_js) do %>
   <%= javascript_tag do %>
