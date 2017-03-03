@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
 
   def update
     @group.update(group_params)
+    redirect_to current_user_profile_path
   end
 
   def destroy

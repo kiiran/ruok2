@@ -24,98 +24,108 @@
 </div>
 
   <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-  $(function(){
-  $(".tab").on("click", function(e){
-  $(".tab").removeClass('active');
-  $(this).addClass('active');
+    <%= javascript_tag do %>
+      $(function(){
+      $(".tab").on("click", function(e){
+        $(".tab").removeClass('active');
+        $(this).addClass('active');
 
-  $(".container").addClass('tab-content-hide');
-  var tabSelector = $(this).data('target');
-  $(tabSelector).removeClass('tab-content-hide');
-});
-});
-<% end %>
-<% end %>
 
+        $(".container").addClass('tab-content-hide');
+        var tabSelector = $(this).data('target');
+        $(tabSelector).removeClass('tab-content-hide');
+      });
+    });
+    <% end %>
+  <% end %>
+</div>
 
 <div class="tabs">
   <a class="tab active" data-target="#your-groups" href="#">
     <h3>You Groups</h3>
-    <p>nice </p>
   </a>
   <a class="tab" data-target="#your-stats" href="#">
     <h3>Personal Stats</h3>
-    <p>sweet</p>
   </a>
   <a class="tab" data-target="#profile-info" href="#">
     <h3>Profile Info</h3>
-    <p>Hey you</p>
   </a>
 </div>
+
+<!-- here put cards in a partial: -->
 
 <div class="wrapper">
   <div class="container" id="your-groups" >
     <div class="row">
-      <h3 class="dark-text">Your Groups:</h3>
       <% if !current_user.groups.blank? %>
-      <% current_user.groups.each do |group| %>
-      <div class="col-xs-6 col-sm-4 col-md-3">
-        <% if !group.photo.nil? %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-        url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
-        <% else %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-          <% end %>
-          <div class="card-category">
-            <p><%= group.name %></p>
-          </div>
-          <div class="card-description">
-            <%= link_to 'Show', group_path(group)%>
-            <%= link_to 'Edit', edit_group_path(group) if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true
-%>
-            <%= link_to 'Delete', group_path(group), method: :delete if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin %>
-          </div>
+
+        <% current_user.groups.each do |group| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <!-- card for the group is here -->
+              <% if !group.photo.nil? %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+              url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
+              <% else %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+              <% end %>
+                <div class="card-category">
+                  <p><%= group.name %></p>
+                </div>
+              </div>
+        <!-- end of card for the group -->
+            <div class="" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; ; margin-top: 5px;">
+              <%= link_to 'Show', group_path(group), class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;" %>
+              <%= link_to 'Edit', edit_group_path(group), class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;"  if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true  %>
+              <%= link_to 'Delete', group_path(group), method: :delete, class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;" if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true %>
+            </div>
+        <!-- list of cards for group members is here -->
+            <% group.users.each do |member| %>
+              <div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+                <p><%= member.first_name + " " + member.last_name %></p>
+              </div>
+            <% end %>
         </div>
-      </div>
-      <% end %>
+  <!-- end of list of cards for group members -->
+        <% end %>
       <% else %>
       <p> You have no groups. Sad.</p>
       <% end %>
     </div>
-    <div class="wrapper text-center">
-      <%= link_to 'New group', new_group_path %>
+    <div class="wrapper text-center" style="margin-top: 100px;">
+      <%= link_to 'New group', new_group_path, class: "btn btn-card" %>
     </div>
   </div>
+</div>
 
-  <div class="container tab-content-hide" id="your-stats">
-    <div class="row">
-      <h3 class="dark-text">Personal Stats!</h3>
+<div class="container tab-content-hide" id="your-stats">
+  <div class="row">
+    <h3 class="dark-text">Personal Stats!</h3>
 
-      <!-- link_to 'Sell your game', new_user_product_offer_path, {class: 'btn btn-lg btn-warning'} -->
-    </div>
+    <!-- link_to 'Sell your game', new_user_product_offer_path, {class: 'btn btn-lg btn-warning'} -->
   </div>
+</div>
 
-  <div class="container tab-content-hide" id="profile-info" >
-    <div class="row">
-      <h3 class="dark-text">My name is <%= @user.first_name %> <%= @user.last_name %>!</h3>
-      <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
-        <% if !@user.facebook_picture_url.nil? %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-        url('<%= cl_image_path @user.facebook_picture_url, gravity: "south" %>')"></div>
+<div class="container tab-content-hide" id="profile-info" >
+  <div class="row">
+    <h3 class="dark-text">My name is <%= @user.first_name %> <%= @user.last_name %>!</h3>
+    <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
+      <% if !@user.facebook_picture_url.nil? %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+      url('<%= cl_image_path @user.facebook_picture_url, gravity: "south" %>')"></div>
+
       <% elsif !@user.photo.nil? %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-        url('<%= cl_image_path @user.photo.path, gravity: "south" %>')"></div>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+      url('<%= cl_image_path @user.photo.path, gravity: "south" %>')"></div>
       <% else %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
        <% end %>
-       </div>
-    </div>
+     </div>
+   </div>
 
 
-    <p>Contact-me at: <%= @user.email %></p>
-      <!-- link_to 'Sell your game', new_user_product_offer_path, {class: 'btn btn-lg btn-warning'} -->
-    </div>
-  </div>
+   <p>Contact-me at: <%= @user.email %></p>
+   <!-- link_to 'Sell your game', new_user_product_offer_path, {class: 'btn btn-lg btn-warning'} -->
+ </div>
+</div>
 
 </div>

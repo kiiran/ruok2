@@ -48,8 +48,9 @@
 .navbar-wagon-item {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 5px;
+  padding: 5px 15px;
   margin: 0 20px;
+  border-radius: 50%;
 }
 
 .navbar-wagon-item > .dropdown {
@@ -74,7 +75,7 @@
   color: $brand-color;
   text-decoration: none;
   border-bottom: 2px solid $brand-color;
-  transition: border-bottom 0.7s;
+  transition: all 0.7s;
 }
 
 /* Navbar right button */
