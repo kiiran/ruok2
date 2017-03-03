@@ -35,13 +35,16 @@
   </a>
 </div>
 
+<!-- here put cards in a partial: -->
+
 <div class="wrapper">
   <div class="container" id="your-groups" >
     <div class="row">
       <h3 class="dark-text">Your Groups:</h3>
       <% if !current_user.groups.blank? %>
       <% current_user.groups.each do |group| %>
-      <div class="col-xs-6 col-sm-4 col-md-3">
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <% if !group.photo.nil? %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
         url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
@@ -80,7 +83,7 @@
   <div class="container tab-content-hide" id="profile-info" >
     <div class="row">
       <h3 class="dark-text">My name is <%= @user.first_name %> <%= @user.last_name %>!</h3>
-      <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-4">
         <% if !@user.facebook_picture_url.nil? %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
         url('<%= cl_image_path @user.facebook_picture_url, gravity: "south" %>')"></div>
