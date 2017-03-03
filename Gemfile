@@ -31,7 +31,7 @@ gem 'autoprefixer-rails'
 gem "chartkick"
 gem 'active_median'
 gem 'groupdate'
-gem 'hightop'
+
 
 group :development, :test do
   gem 'binding_of_caller'

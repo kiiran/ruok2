@@ -50,3 +50,8 @@ Group.create(name: "David the master")
 Group.create(name: "Filipe the master")
 Group.create(name: "Joao the master")
 
+Answer.create(question_id: 1, content: "hello1", pos: 1.0, neutral: 10.0, neg: 1.3)
+Answer.create(question_id: 2, content: "hello2", pos: 20.0, neutral: 6.0, neg: 9.1)
+Answer.create(question_id: 3, content: "hello3", pos: 40.0, neutral: 20.0, neg: 20.1)
+
+
