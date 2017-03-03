@@ -6,7 +6,8 @@ class ConversationHistoriesController < ApplicationController
   end
 
   def new
-    @conversation_history = ConversationHistory.new
+    @ch = ConversationHistory.find(params["conversation_history_id"])
+    @the_questions = @ch.questions
   end
 
   def show

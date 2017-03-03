@@ -1,16 +1,16 @@
 # seed with first questions:
+ConversationHistory.destroy_all
 Answer.destroy_all
 Question.destroy_all
 TemplateQuestion.destroy_all
-ConversationHistory.destroy_all
 GroupMembership.destroy_all
 Group.destroy_all
 User.destroy_all
 
-TemplateQuestion.create(subject: "opening_question", content: "How are you today?")
-TemplateQuestion.create(subject: "opening_question", content: "Tell me about your day")
-TemplateQuestion.create(subject: "opening_question", content: "How are you feeling?")
-TemplateQuestion.create(subject: "opening_question", content: "What's on your mind?")
+TemplateQuestion.create(id: 1, subject: "opening_question", content: "How are you today?")
+TemplateQuestion.create(id: 2, subject: "opening_question", content: "Tell me about your day")
+TemplateQuestion.create(id: 3, subject: "opening_question", content: "How are you feeling?")
+TemplateQuestion.create(id: 4, subject: "opening_question", content: "What's on your mind?")
 
 TemplateQuestion.create(subject: "neg", content: "Sounds like you're not having the best time. What could you do to make things better?")
 TemplateQuestion.create(subject: "neg", content: "Oh dear. How could you make things better?")
