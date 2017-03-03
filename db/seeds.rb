@@ -7,44 +7,25 @@ GroupMembership.destroy_all
 Group.destroy_all
 User.destroy_all
 
-questions_by_subject = {
-  "generic_first_questions" => [
-    "How are you today?",
-    "What are you up to?",
-    "How are you feeling?",
-    "What's on your mind?"
-  ],
-  "generic_second_questions" => [
-    "How does that make you feel?",
-    "Why do you feel that way?",
-    "Does it happen often?",
-    "How did it go?"
-  ],
-  "generic_third_questions" => [
-    "What will you do to improve on that?",
-    "anything else you'd like to tell me?",
-    "Do you have children?",
-    "What are your online banking login details?"
-  ]
-}
+TemplateQuestion.create(subject: "opening_question", content: "How are you today?")
+TemplateQuestion.create(subject: "opening_question", content: "Tell me about your day")
+TemplateQuestion.create(subject: "opening_question", content: "How are you feeling?")
+TemplateQuestion.create(subject: "opening_question", content: "What's on your mind?")
 
-# subjects = [
-#   generic_first_questions,
-#   generic_second_questions,
-#   generic_third_questions
-# ]
+TemplateQuestion.create(subject: "neg", content: "Sounds like you're not having the best time. What could you do to make things better?")
+TemplateQuestion.create(subject: "neg", content: "Oh dear. How could you make things better?")
+TemplateQuestion.create(subject: "neg-solution", content: "Okey doke. Any more info you'd like to add?")
+
+TemplateQuestion.create(subject: "pos", content: "Sounds things are going well overall. Is there any way to make things go even better?")
+TemplateQuestion.create(subject: "pos-solution", content: "Okey doke. Any other info you'd like to give me?")
+
+
 
 home_user = User.create(email: "home_user@dont-erase.com", password: "DO-NOT-ERASE-THIS-USER", first_name: "HOME", last_name: "USER")
 home_group = Group.new
 home_group_membership = GroupMembership.create(group: home_group, user: home_user)
 home_group.save
 home_conversations = ConversationHistory.create(user: home_user, group: home_group)
-
-questions_by_subject.each do |subject, questions|
-  questions.each do |question|
-      q01 = TemplateQuestion.create(content: question, subject: subject )
-  end
-end
 
 Group.create(name: "David the master")
 Group.create(name: "Filipe the master")

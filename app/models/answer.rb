@@ -9,7 +9,7 @@ class Answer < ApplicationRecord
     answer.pos = sentiment_hash[:pos]
     answer.neutral = sentiment_hash[:neutral]
     answer.neg = sentiment_hash[:neg]
-
+    answer.label = sentiment_hash[:label]
     answer.save
     answer
   end

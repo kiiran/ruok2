@@ -4,12 +4,6 @@ class UsersController < ApplicationController
   #   redirect_to new_user_session_path
   # end
 
-
-  # def new
-  #   @user = User.new
-  #   raise
-  # end
-
   def profile
     @user = current_user
   end

@@ -10,11 +10,12 @@ class TemplateQuestion < ApplicationRecord
   def self.first_question
     template_questions = [
         "How are you today?",
-        "What are you up to?",
+        "Tell me about your day",
         "How are you feeling?",
         "What's on your mind?"
       ]
-    TemplateQuestion.new(content: template_questions.sample)
+    # Just "Question" because it will have the TQ_id
+    Question.new(content: template_questions.sample)
   end
 
   def self.sample_of_subject(subject)
