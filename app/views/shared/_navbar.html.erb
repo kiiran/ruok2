@@ -30,7 +30,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if !current_user.photo.nil? %>
-            <%= cl_image_tag current_user.photo.path, width: 50, height: 50, gravity: :face, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= cl_image_tag current_user.photo.path, width: 40, height: 40, gravity: :face, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% elsif !current_user.facebook_picture_url.nil? %>
             <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
