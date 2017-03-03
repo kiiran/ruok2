@@ -41,7 +41,6 @@
 <div class="wrapper">
   <div class="container" id="your-groups" >
     <div class="row">
-      <h3 class="dark-text">Your Groups:</h3>
       <% if !current_user.groups.blank? %>
         <% current_user.groups.each do |group| %>
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -57,7 +56,7 @@
                 </div>
               </div>
         <!-- end of card for the group -->
-            <div class="" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+            <div class="" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; ; margin-top: 5px;">
               <%= link_to 'Show', group_path(group), class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;" %>
               <%= link_to 'Edit', edit_group_path(group), class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;"  if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true  %>
               <%= link_to 'Delete', group_path(group), method: :delete, class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;" if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true %>
@@ -76,9 +75,9 @@
       <p> You have no groups. Sad.</p>
       <% end %>
     </div>
-  </div>
-  <div class="wrapper text-center">
-    <%= link_to 'New group', new_group_path %>
+    <div class="wrapper text-center" style="margin-top: 100px;">
+      <%= link_to 'New group', new_group_path, class: "btn btn-card" %>
+    </div>
   </div>
 </div>
 
