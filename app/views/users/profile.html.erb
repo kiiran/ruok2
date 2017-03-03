@@ -1,18 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
+      <% if current_user.first_name.nil? %>
+      <h1 class="dark-text">'Ello there, mate!</h1>
+      <% else %>
+      <h1 class="dark-text">Hey, <%= current_user.first_name %>!</h1>
+      <% end %>
+      <h4 class="dark-text">Here's your profile</h4>
+      <h4 class="dark-text"> Here you can see your Groups, Data and update your profile</h4>
+    </div>
+    <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
+      <% if current_user.first_name.nil? %>
+      <h1 class="dark-text">'Ello there, mate!</h1>
+      <% else %>
+      <h1 class="dark-text">Hey, <%= current_user.first_name %>!</h1>
+      <% end %>
+      <h4 class="dark-text">Here's your profile</h4>
+      <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
+      <%= pie_chart(Answer.joins(:question).group(:subject).sum(:pos)) %>
+      <%= pie_chart(Answer.group(:question_id).sum(:pos)) %>
+    </div>
+  </div>
+</div>
 
-<div class="wrapper text-center" style="padding: 0 5%;">
-  <% if current_user.first_name.nil? %>
-  <h1 class="dark-text">'Ello there, mate!</h1>
-  <% else %>
-  <h1 class="dark-text">Hey, <%= current_user.first_name %>!</h1>
-  <% end %>
-  <h4 class="dark-text">Here's your profile</h4>
-  <h4 class="dark-text"> Here you can see your Groups, Data and update your profile</h4>
   <% content_for(:after_js) do %>
     <%= javascript_tag do %>
       $(function(){
       $(".tab").on("click", function(e){
         $(".tab").removeClass('active');
         $(this).addClass('active');
+
 
         $(".container").addClass('tab-content-hide');
         var tabSelector = $(this).data('target');
