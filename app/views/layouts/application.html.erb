@@ -10,21 +10,30 @@
   </head>
   <body>
 
-    <div id="wrapper">
-      <div id="navbar">
-        <%= render 'shared/navbar' %>
-      </div>
-
-      <div id="page-body">
-        <%= render 'shared/flashes' %>
-        <%= yield %>
-      </div>
-      <% if !current_page?(root_path) %>
-        <div id="footer">
-          <%= render 'layouts/footer' %>
+    <header>
+      <div class="wrapper">
+        <div id="navbar">
+          <%= render 'shared/navbar' %>
         </div>
-      <% end %>
-    </div>
+
+      </div>
+    </header>
+
+    <section id="main">
+      <div class="wrapper">
+        <div id="wrapper">
+          <div id="page-body">
+            <%= render 'shared/flashes' %>
+            <%= yield %>
+          </div>
+          <% if !current_page?(root_path) %>
+            <div id="footer">
+              <%= render 'layouts/footer' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
 
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
