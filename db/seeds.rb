@@ -50,3 +50,12 @@ Group.create(name: "David the master")
 Group.create(name: "Filipe the master")
 Group.create(name: "Joao the master")
 
+Question.create(conversation_history_id: home_conversations.id, subject: "home", content: "hello?1", template_question_id: 1)
+Question.create(conversation_history_id: home_conversations.id, subject: "home", content: "hello?2", template_question_id: 2)
+Question.create(conversation_history_id: home_conversations.id, subject: "home", content: "hello?3", template_question_id: 3)
+
+
+Answer.create(question_id: 1, pos: rand(1..100).to_f, neutral: rand(1..100).to_f, neg: rand(1..100).to_f, content: "hello 1")
+Answer.create(question_id: 2, pos: rand(1..100).to_f, neutral: rand(1..100).to_f, neg: rand(1..100).to_f, content: "hello 2")
+Answer.create(question_id: 3, pos: rand(1..100).to_f, neutral: rand(1..100).to_f, neg: rand(1..100).to_f, content: "hello 3")
+
