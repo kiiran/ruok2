@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
+    @answers = Answer.all
   end
 
 
