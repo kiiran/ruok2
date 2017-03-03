@@ -8,35 +8,34 @@
   <h4 class="dark-text">Here's your profile</h4>
   <h4 class="dark-text"> Here you can see your Groups, Data and update your profile</h4>
   <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-  $(function(){
-  $(".tab").on("click", function(e){
-  $(".tab").removeClass('active');
-  $(this).addClass('active');
+    <%= javascript_tag do %>
+      $(function(){
+      $(".tab").on("click", function(e){
+        $(".tab").removeClass('active');
+        $(this).addClass('active');
 
-  $(".container").addClass('tab-content-hide');
-  var tabSelector = $(this).data('target');
-  $(tabSelector).removeClass('tab-content-hide');
-});
-});
-<% end %>
-<% end %>
+        $(".container").addClass('tab-content-hide');
+        var tabSelector = $(this).data('target');
+        $(tabSelector).removeClass('tab-content-hide');
+      });
+    });
+    <% end %>
+  <% end %>
 </div>
 
 <div class="tabs">
   <a class="tab active" data-target="#your-groups" href="#">
     <h3>You Groups</h3>
-    <p>nice </p>
   </a>
   <a class="tab" data-target="#your-stats" href="#">
     <h3>Personal Stats</h3>
-    <p>sweet</p>
   </a>
   <a class="tab" data-target="#profile-info" href="#">
     <h3>Profile Info</h3>
-    <p>Hey you</p>
   </a>
 </div>
+
+<!-- here put cards in a partial: -->
 
 <div class="wrapper">
   <div class="container" id="your-groups" >
@@ -44,7 +43,8 @@
       <h3 class="dark-text">Your Groups:</h3>
       <% if !current_user.groups.blank? %>
       <% current_user.groups.each do |group| %>
-      <div class="col-xs-6 col-sm-4 col-md-3">
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <% if !group.photo.nil? %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
         url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
@@ -83,7 +83,7 @@
   <div class="container tab-content-hide" id="profile-info" >
     <div class="row">
       <h3 class="dark-text">My name is <%= @user.first_name %> <%= @user.last_name %>!</h3>
-      <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-4">
         <% if !@user.facebook_picture_url.nil? %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
         url('<%= cl_image_path @user.facebook_picture_url, gravity: "south" %>')"></div>
