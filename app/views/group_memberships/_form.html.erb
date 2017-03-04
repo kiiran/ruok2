@@ -1,8 +1,10 @@
 <%= simple_form_for [@group, @group_membership] do |f| %>
   <%= f.error_notification%>
   <!-- po.input :product_id, collection: Product.all -->
-  <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email)%>
-  <%= f.button :submit %>
+  <div style="margin: 20px 0">
+    <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email) %>
+  </div>
+  <%= f.button :submit, class: "btn btn-brand-with-bg" %>
 <% end %>
 
 

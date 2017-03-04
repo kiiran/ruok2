@@ -26,6 +26,7 @@
     <%= javascript_tag do %>
       $(function(){
       $(".tab").on("click", function(e){
+        e.preventDefault();
         $(".tab").removeClass('active');
         $(this).addClass('active');
 
@@ -37,17 +38,16 @@
     });
     <% end %>
   <% end %>
-</div>
 
 <div class="tabs">
   <a class="tab active" data-target="#your-groups" href="#">
-    <h3>You Groups</h3>
+    <h3>Your groups</h3>
   </a>
   <a class="tab" data-target="#your-stats" href="#">
-    <h3>Personal Stats</h3>
+    <h3>Stats</h3>
   </a>
   <a class="tab" data-target="#profile-info" href="#">
-    <h3>Profile Info</h3>
+    <h3>Profile info</h3>
   </a>
 </div>
 
@@ -60,40 +60,36 @@
         <% if !current_user.groups.blank? %>
 
           <% current_user.groups.each do |group| %>
-          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height: 390px">
-            <!-- card for the group is here -->
-                <% if !group.photo.nil? %>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height: 390px">
+              <!-- card for the group is here -->
+              <% if !group.photo.nil? %>
                 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
                 url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
-                <% else %>
+              <% else %>
                 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-                <% end %>
+              <% end %>
                   <div class="card-category">
                     <p><%= group.name %></p>
                   </div>
                 </div>
-          <!-- end of card for the group -->
+              <!-- end of card for the group -->
               <div class="" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; ; margin-top: 5px;">
                 <%= link_to 'Show', group_path(group), class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;" %>
                 <%= link_to 'Edit', edit_group_path(group), class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;"  if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true  %>
                 <%= link_to 'Delete', group_path(group), method: :delete, class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;" if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true %>
               </div>
-          <!-- list of cards for group members is here -->
+              <!-- list of cards for group members is here -->
               <% group.users.each do |member| %>
                 <div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
                   <p><%= member.first_name + " " + member.last_name %></p>
                 </div>
               <% end %>
-          </div>
-    <!-- end of list of cards for group members -->
+              <!-- end of list of cards for group members -->
+            </div>
           <% end %>
         <% else %>
-        <p> You have no groups. Sad.</p>
+          <p> You have no groups. Sad.</p>
         <% end %>
-
-
-
-
       </div>
     </div>
 
@@ -107,39 +103,31 @@
 <div class="container tab-container tab-content-hide" id="your-stats">
   <div class="row">
     <h3 class="dark-text">Personal Stats!</h3>
-    <h2 class="dark-text"> This is your negativity per question. Sad. :(</h2>
-    <div class = "col-xs-12 col-sm-6""> <%= bar_chart(Answer.group(:question_id).sum(:neg), width: "600px") %> </div>
-
-    <!-- link_to 'Sell your game', new_user_product_offer_path, {class: 'btn btn-lg btn-warning'} -->
+    <h4 class="dark-text"> This is your negativity per question. Sad. :(</h4>
+    <div class = "col-xs-12 col-sm-6"> <%= bar_chart(Answer.group(:question_id).sum(:neg), width: "600px") %></div>
   </div>
 </div>
 
 <div class="container tab-container tab-content-hide" id="profile-info" >
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
-    <div class="slightly-padded">
-      <div style="display: flex; align-items: center; justify-content: center;">
-        <% if !@user.facebook_picture_url.nil? %>
-        <%= cl_image_tag @user.facebook_picture_url, gravity: "south", class: "avatar-large" %>
-
-        <% elsif !@user.photo.nil? %>
-          <%= cl_image_tag @user.photo.path, gravity: "south", class: "avatar-large" %>
-        <% else %>
-        <div class="avatar-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+      <div class="slightly-padded">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <% if !@user.facebook_picture_url.nil? %>
+            <%= cl_image_tag @user.facebook_picture_url, gravity: "south", class: "avatar-large" %>
+          <% elsif !@user.photo.nil? %>
+            <%= cl_image_tag @user.photo.path, gravity: "south", class: "avatar-large" %>
+          <% else %>
+            <div class="avatar-large" style="background-image: linear-gradient(-225deg, $brand-color, $brand-light)"></div>
          <% end %>
         </div>
         <div style="display: flex; align-items: center; justify-content: center;">
           <h3 class="dark-text">My name is <%= @user.first_name %> <%= @user.last_name %>!</h3>
         </div>
         <div style="display: flex; align-items: center; justify-content: center;">
-          <p>Contact-me at: <%= @user.email %></p>
+          <p>Email: <%= @user.email %></p>
         </div>
       </div>
     </div>
-   </div>
-
-   <!-- link_to 'Sell your game', new_user_product_offer_path, {class: 'btn btn-lg btn-warning'} -->
- </div>
-</div>
-
+  </div>
 </div>

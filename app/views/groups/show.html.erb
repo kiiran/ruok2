@@ -30,7 +30,11 @@
           <%= member.user.email %>
         </div>
         <div class="card-description">
-          <%= link_to "delete membership", group_group_membership_path(member.group.id, member), method: :delete %>
+          <% if member.user.id == current_user.id %>
+            <%= link_to "Leave group", group_group_membership_path(member.group.id, member), method: :delete %>
+          <% else %>
+            <%= link_to "Remove from group", group_group_membership_path(member.group.id, member), method: :delete %>
+          <% end %>
         </div>
       </div>
     </div>
