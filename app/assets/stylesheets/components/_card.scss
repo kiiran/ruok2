@@ -54,22 +54,19 @@
   opacity: 0.1;
 }
 
-.btn-card {
-  padding: 8px 20px;
+.btn-card,
+.btn-card:visited {
   background-color: $brand-color;
   border-radius: 2px;
   border: solid $brand-color 1.5px;
-  color: white;
+  color: $brand-light;
   font-size: 14px;
   font-weight: bold;
+  padding: 8px 20px;
   transition: all 0.2s ease;
 }
 
-.btn-card:hover,
-.btn-card:visited {
+.btn-card:hover {
   color: white;
-  background-color: $brand-color;
   transition: all 0.2s ease;
-  text-shadow: none;
-  border-color: $brand-color;
 }
