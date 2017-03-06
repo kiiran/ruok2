@@ -1,9 +1,4 @@
 class TemplateQuestion < ApplicationRecord
-# subjects = [
-#   "generic first question",
-#   "generic second question",
-#   "generic third question"
-# ]
 
   has_many :questions
 
@@ -18,8 +13,8 @@ class TemplateQuestion < ApplicationRecord
     Question.new(content: template_questions.sample)
   end
 
-  def self.sample_of_subject(subject)
-    TemplateQuestion.where(subject: subject).sample
+  def self.sample_of_question_type(question_type)
+    TemplateQuestion.where(question_type: question_type).sample
   end
 end
 

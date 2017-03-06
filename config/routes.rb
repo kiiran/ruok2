@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :template_questions, only: [:index, :show]
   resources :groups do
     resources :group_memberships
+    resources :conversation_histories, only: :edit
   end
   resources :groups
   resources :answers, only: :create

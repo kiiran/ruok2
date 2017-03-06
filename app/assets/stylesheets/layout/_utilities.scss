@@ -28,12 +28,14 @@
 .bg-dark-blue {
   background: #3b5998;
 }
+.light-bg {
+  background-color: #F8F8F8;
+}
 
 html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
   color: $gray;
 }
 #wrapper {
@@ -44,8 +46,8 @@ body {
 #page-body {
   // background-size: 100%;
   min-height: calc(100vh - 70px);
-  height: calc(100% - 70px);
-  padding-bottom: 70px; /* Height of the footer element */
+  height: 100%;
+  // padding-bottom: 70px; /* Height of the footer element */
   // z-index: 2;
 }
 

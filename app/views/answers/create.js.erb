@@ -7,6 +7,7 @@ if ($('#q02').is(":visible")) {
   $('#q02').fadeTo("slow",0.3);
   <!-- show next question: -->
 
+
   <% third = TemplateQuestion.sample_of_subject('neg-solution') %>
 
   var questionThree = "<%= third.content %>";
@@ -21,6 +22,7 @@ if ($('#q02').is(":visible")) {
   console.log("Gone to question 2");
   $('.btn', '#q01').css("visibility","hidden");
   $('#q01').fadeTo("slow",0.3);
+
   // <!-- var answer_one_analysis = "<%= @answer.label %>" -->
   // <!-- if (answer_one_analysis == "neg") { -->
   // <!--   ###Negative question -->
@@ -39,6 +41,7 @@ if ($('#q02').is(":visible")) {
   // <!-- $('.form-question'>'input','#q02').focus(); -->
   $('h2','#q02').html(questionTwo);
   $('h4','#q02').html(questionTwoId);
+
   $('#answer-text','#q02').focus();
 };
 

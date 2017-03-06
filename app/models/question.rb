@@ -8,6 +8,7 @@ class Question < ApplicationRecord
     question = Question.new
     question.subject = template_question.subject
     question.content = template_question.content
+    # question.question_type = template_question.question_type
     question.template_question = template_question
     question.conversation_history = convo_history
     question.save
