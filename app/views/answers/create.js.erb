@@ -1,18 +1,22 @@
 console.log("answer content: <%= @answer.content %>");
 
 if ($('#q02').is(":visible")) {
+
   console.log("Gone to question 3");
   <!-- hide button that has been pressed: -->
   $('.btn', '#q02').css("visibility","hidden");
+  $('#q02').fadeTo("slow",0.3);
   <!-- show next question: -->
   var questionThree = "<%= TemplateQuestion.sample_of_subject("neg-solution").content %>";
   $('#q03').fadeIn("slow");
   $('h2','#q03').html(questionThree);
+  $('#answer-text','#q03').focus();
 
 } else {
+
   console.log("Gone to question 2");
   $('.btn', '#q01').css("visibility","hidden");
-  $('h1').fadeOut("slow").css("visibility","hidden");
+  $('#q01').fadeTo("slow",0.3);
   <!-- var answer_one_analysis = "<%= @answer.label %>" -->
   <!-- if (answer_one_analysis == "neg") { -->
   <!--   ###Negative question -->
@@ -25,7 +29,9 @@ if ($('#q02').is(":visible")) {
   var questionTwo = "<%= TemplateQuestion.sample_of_subject('neg').content %>";
 
   $('#q02').fadeIn("slow");
+  <!-- $('.form-question'>'input','#q02').focus(); -->
   $('h2','#q02').html(questionTwo);
+  $('#answer-text','#q02').focus();
 };
 
 
