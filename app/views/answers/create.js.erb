@@ -7,7 +7,7 @@ if ($('#q02').is(":visible")) {
   $('.btn', '#q02').css("visibility","hidden");
   $('#q02').fadeTo("slow",0.3);
   <!-- show next question: -->
-  var questionThree = "<%= TemplateQuestion.sample_of_subject("neg-solution").content %>";
+  var questionThree = "<%= TemplateQuestion.sample_of_question_type("neg-solution").content %>";
   $('#q03').fadeIn("slow");
   $('h2','#q03').html(questionThree);
   $('#answer-text','#q03').focus();
@@ -26,7 +26,7 @@ if ($('#q02').is(":visible")) {
   <!--   ###Neutral question_id -->
   <!-- } -->
 
-  var questionTwo = "<%= TemplateQuestion.sample_of_subject('neg').content %>";
+  var questionTwo = "<%= TemplateQuestion.sample_of_question_type('neg').content %>";
 
   $('#q02').fadeIn("slow");
   <!-- $('.form-question'>'input','#q02').focus(); -->
