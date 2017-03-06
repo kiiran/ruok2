@@ -1,52 +1,108 @@
-<div class="container">
-  <div class="row">
-    <div class = 'form col-xs-12'>
-      <% if !@group.photo.nil? %>
-        <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-      url('<%= cl_image_path @group.photo.path, gravity: "south" %>')">
-      <% else %>
-        <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-      <% end %>
-        <div class="show-group">
-          <h1><%= @group.name %></h1>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <% @group.group_memberships.each do |member| %>
-    <div class="col-xs-6 col-sm-4 col-md-3">
-
-    <% if !member.user.facebook_picture_url.nil? %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-      url('<%= cl_image_path member.user.facebook_picture_url, gravity: "south" %>')">
-    <% elsif !member.user.photo.nil? %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-      url('<%= cl_image_path member.user.photo.path, gravity: "south" %>')">
-    <% else %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-     <% end %>
-        <div class="card-category">
-          <%= member.user.email %>
-        </div>
-        <div class="card-description">
-          <% if member.user.id == current_user.id %>
-            <%= link_to "Leave group", group_group_membership_path(member.group.id, member), method: :delete %>
+<div class="wrapper">
+  <div class="container" style="border-style: dashed;">
+    <div class="row">
+      <div class = 'form col-xs-12'>
+        <!-- group stats and name here -->
+        <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
+          <% if @group.name.nil? %>
+            <h1 class="dark-text">'(group with no name)'</h1>
           <% else %>
-            <%= link_to "Remove from group", group_group_membership_path(member.group.id, member), method: :delete %>
+            <h1 class="dark-text">Group statistics for: <%= @group.name %></h1>
           <% end %>
+            <h4 class="dark-text">Overall positivity:</h4>
+            <h4 class="dark-text">Overall negativity</h4>
+        </div>
+        <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
+          <h4 class="dark-text">This is your positivity per question! :) </h4>
+          <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
+          <%= pie_chart(Answer.group(:question_id).sum(:pos), hight: "500px") %>
         </div>
       </div>
-    </div>
-    <% end %>
-  </div>
-  <div class="row text-center">
-    <div class = 'form col-md-4 col-md-offset-1'>
-      <%= link_to "Add Member", new_group_group_membership_path(@group.id) if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true%>
-    </div>
-    <div class = 'form col-md-4 col-md-offset-1'>
-      <%= link_to "Go back", current_user_profile_path %>
     </div>
   </div>
 </div>
 
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="container">
+          <%= link_to "Answer Questionnaire", "#" , class: "btn btn-success", id: "open-questionnaire"%>
+          <!-- if there is no convo_history, create one: -->
+          <% if ConversationHistory.where(user: current_user, group: @group).empty? %>
+            <%= @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
+          <% else %>
+            <% @new_convo_history = ConversationHistory.where(user: current_user, group: @group).last %>
+          <% end %>
+        </div>
+
+
+          <!-- jquery for this at the bottom of this page-->
+        <div class="container" id="questionnaire" style="display: none; border-style: dashed; width: 100%;">
+          <%= render 'questionnaire' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="container" style="width: 100%;">
+
+    <div class="row">
+      <% @group.group_memberships.each do |member| %>
+      <div class="col-xs-6 col-sm-4 col-md-3">
+
+      <% if !member.user.facebook_picture_url.nil? %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url('<%= cl_image_path member.user.facebook_picture_url, gravity: "south" %>')">
+      <% elsif !member.user.photo.nil? %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url('<%= cl_image_path member.user.photo.path, gravity: "south" %>')">
+      <% else %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
+       <% end %>
+          <div class="card-category">
+            <%= member.user.email %>
+          </div>
+          <div class="card-description">
+            <% if member.user.id == current_user.id %>
+              <%= link_to "Leave group", group_group_membership_path(member.group.id, member), method: :delete %>
+            <% else %>
+              <%= link_to "Remove from group", group_group_membership_path(member.group.id, member), method: :delete %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="container">
+
+    <div class="row text-right">
+      <div class = 'col-xs-12'>
+        <%= link_to "Add a Member", new_group_group_membership_path(@group.id) , class: "btn btn-primary" if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true%>
+        <%= link_to "Go back", current_user_profile_path , class: "btn btn-warning" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+
+      $('#open-questionnaire').on('click', function(event){
+        $('#open-questionnaire').hide();
+        $('#questionnaire').fadeIn("slow");
+        $('#answer-text','#q01').focus();
+
+      });
+    });
+
+  <% end %>
+<% end %>

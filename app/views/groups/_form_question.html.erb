@@ -1,0 +1,7 @@
+<%= form_tag(new_conversation_history_path, :method => "get", class: "form-question") do %>
+
+  <%= hidden_field_tag :question_id, params[:question_id] %>
+  <%= hidden_field_tag :conversation_history_id, @new_convo_history.id %>
+  <%= text_field_tag :answer, params[:answer], placeholder: "Write your reply here", class: "wide", id: "answer-text" %>
+  <%= submit_tag "Reply", name: nil, class: "btn btn-brand-with-bg", id: "answer-submit"%>
+<% end %>
