@@ -1,33 +1,46 @@
-console.log("answer content: <%= @answer.content %>");
 
 if ($('#q02').is(":visible")) {
+
   console.log("Gone to question 3");
   <!-- hide button that has been pressed: -->
   $('.btn', '#q02').css("visibility","hidden");
+  $('#q02').fadeTo("slow",0.3);
   <!-- show next question: -->
-  var questionThree = "<%= TemplateQuestion.sample_of_subject("neg-solution").content %>";
+
+  <% third = TemplateQuestion.sample_of_subject('neg-solution') %>
+
+  var questionThree = "<%= third.content %>";
+  var questionThreeId = "<%= third.id %>";
   $('#q03').fadeIn("slow");
   $('h2','#q03').html(questionThree);
+  $('h4','#q03').html(questionThreeId);
+  $('#answer-text','#q03').focus();
 
 } else {
+
   console.log("Gone to question 2");
   $('.btn', '#q01').css("visibility","hidden");
-  $('h1').fadeOut("slow").css("visibility","hidden");
-  <!-- var answer_one_analysis = "<%= @answer.label %>" -->
-  <!-- if (answer_one_analysis == "neg") { -->
-  <!--   ###Negative question -->
-  <!-- } else if (answer_one_analysis == "pos") { -->
-  <!--   ###Positive question -->
-  <!-- } else { -->
-  <!--   ###Neutral question_id -->
-  <!-- } -->
+  $('#q01').fadeTo("slow",0.3);
+  // <!-- var answer_one_analysis = "<%= @answer.label %>" -->
+  // <!-- if (answer_one_analysis == "neg") { -->
+  // <!--   ###Negative question -->
+  // <!-- } else if (answer_one_analysis == "pos") { -->
+  // <!--   ###Positive question -->
+  // <!-- } else { -->
+  // <!--   ###Neutral question_id -->
+  // <!-- } -->
 
-  var questionTwo = "<%= TemplateQuestion.sample_of_subject('neg').content %>";
+  <% second = TemplateQuestion.sample_of_subject('neg') %>
+
+  var questionTwo = "<%= second.content %>";
+  var questionTwoId = "<%= second.id %>";
 
   $('#q02').fadeIn("slow");
+  // <!-- $('.form-question'>'input','#q02').focus(); -->
   $('h2','#q02').html(questionTwo);
+  $('h4','#q02').html(questionTwoId);
+  $('#answer-text','#q02').focus();
 };
 
 
 console.log("_end_of_cycle_");
-
