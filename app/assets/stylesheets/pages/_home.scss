@@ -16,3 +16,16 @@
     font-size: 140px;
   };
 }
+
+.secondary-banner{
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.secondary-banner-content{
+  border: 1px dashed white;
+  flex: 0 1 300px;
+  padding: 30px;
+  margin: 0 30px;
+}
