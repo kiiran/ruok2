@@ -33,7 +33,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
   color: $gray;
 }
 #wrapper {
@@ -43,8 +42,8 @@ body {
 
 #page-body {
   // background-size: 100%;
-  min-height: calc(100vh - 70px);
-  height: calc(100% - 70px);
+  // min-height: calc(100vh - 70px);
+  height: 100%;
   padding-bottom: 70px; /* Height of the footer element */
   // z-index: 2;
 }
