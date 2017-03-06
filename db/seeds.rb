@@ -7,18 +7,32 @@ GroupMembership.destroy_all
 Group.destroy_all
 User.destroy_all
 
-TemplateQuestion.create(subject: "opening_question", content: "How are you today?")
-TemplateQuestion.create(subject: "opening_question", content: "Tell me about your day")
-TemplateQuestion.create(subject: "opening_question", content: "How are you feeling?")
-TemplateQuestion.create(subject: "opening_question", content: "What's on your mind?")
+TemplateQuestion.create(subject: "general", question_type: "opening_question", content: "How are you today?")
+TemplateQuestion.create(subject: "general", question_type: "opening_question", content: "Tell me about your day")
+TemplateQuestion.create(subject: "general", question_type: "opening_question", content: "How are you feeling?")
+TemplateQuestion.create(subject: "general", question_type: "opening_question", content: "What's on your mind?")
 
-TemplateQuestion.create(subject: "neg", content: "Sounds like you're not having the best time. What could you do to make things better?")
-TemplateQuestion.create(subject: "neg", content: "Oh dear. How could you make things better?")
-TemplateQuestion.create(subject: "neg-solution", content: "Okey doke. Any more info you'd like to add?")
+TemplateQuestion.create(subject: "general", question_type: "neg", content: "Sounds like you're not having the best time. What could you do to make things better?")
+TemplateQuestion.create(subject: "general", question_type: "neg", content: "Oh dear. How could you make things better?")
+TemplateQuestion.create(subject: "general", question_type: "neg-solution", content: "Okey doke. Any more info you'd like to add?")
 
-TemplateQuestion.create(subject: "pos", content: "Sounds things are going well overall. Is there any way to make things go even better?")
-TemplateQuestion.create(subject: "pos-solution", content: "Okey doke. Any other info you'd like to give me?")
+TemplateQuestion.create(subject: "general", question_type: "pos", content: "Sounds things are going well overall. Is there any way to make things go even better?")
+TemplateQuestion.create(subject: "general", question_type: "pos-solution", content: "Okey doke. Any other info you'd like to give me?")
 
+TemplateQuestion.create(subject: "family", question_type: "opening_question", content: "How was the family tody?")
+TemplateQuestion.create(subject: "family", question_type: "neg", content: "Tell me more about what's bothering you at home?")
+TemplateQuestion.create(subject: "family", question_type: "pos", content: "Tell me more about what's great at home?")
+TemplateQuestion.create(subject: "family", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?")
+
+TemplateQuestion.create(subject: "work", question_type: "opening_question", content: "How was the work tody?")
+TemplateQuestion.create(subject: "work", question_type: "neg", content: "Tell me more about what's bothering you at work?")
+TemplateQuestion.create(subject: "work", question_type: "pos", content: "Tell me more about what's great at work?")
+TemplateQuestion.create(subject: "work", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?")
+
+TemplateQuestion.create(subject: "social", question_type: "opening_question", content: "How was the social life tody?")
+TemplateQuestion.create(subject: "social", question_type: "neg", content: "Tell me more about what's bothering you with your social life?")
+TemplateQuestion.create(subject: "social", question_type: "pos", content: "Tell me more about what's great with your social life?")
+TemplateQuestion.create(subject: "social", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?")
 
 
 home_user = User.create(email: "home_user@dont-erase.com", password: "DO-NOT-ERASE-THIS-USER", first_name: "HOME", last_name: "USER")
