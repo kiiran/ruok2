@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="container" id="questionnaire" style="">
+    <!-- questionnaire will render here -->
+    <%= render'pages/questionnaire'  %>
+  </div>
+</div>
+
+<%= content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(event) {
+
+        event.preventDefault();
+        $('#questionnaire').fadeIn("slow");
+        $('#answer-text','#q01').focus();
+
+    });
+  </script>
+<% end %>
