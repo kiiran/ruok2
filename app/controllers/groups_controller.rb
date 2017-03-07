@@ -35,6 +35,12 @@ class GroupsController < ApplicationController
     redirect_to current_user_profile_path
   end
 
+  def form
+    @new_convo_history = ConversationHistory.new
+    @new_convo_history.user = User.first
+    @new_convo_history.save
+  end
+
 private
   def group_params
     params.require(:group).permit(:name, :photo)

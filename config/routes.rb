@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   resources :groups do
     resources :group_memberships
     resources :conversation_histories, only: :edit
+    get '/form', to: 'groups#form', as: 'current_user_form'
+
   end
   resources :groups
   resources :answers, only: :create
