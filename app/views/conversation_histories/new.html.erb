@@ -6,22 +6,20 @@
         <div class="row">
           <h3 class="text-center">So, here's what we asked you and the answers you gave:</h3>
           <div class="slightly-padded">
-            <div class="col-xs-12 col-md-4">
-              <div class="card text-center">
-                <!-- <h4>Q1: <%#= Question.find(@the_questions.first.id).content  %></h4>
-                <p><%#= Answer.find_by(question_id: @the_questions.first.id).content %></p> -->
-              </div>
-            </div>
             <div class="card col-xs-12 col-md-4">
-              <div class="text-center">
-                <!-- <h4>Q2: <%#= Question.find(@the_questions[1]).content  %></h4> -->
-                <!-- <p><%#= Answer.find_by(question_id: @the_questions[1].id).content %></p> -->
+              <div class="text-center card-bg-gradient">
+                <h4>Q1: <%= Question.find(@the_questions[0].id).content  %></h4>
+                <p><%= Answer.find_by(question_id: @the_questions[0].id).content %></p>
               </div>
             </div>
             <div class="card col-xs-12 col-md-4">
               <div class="text-center card-bg-gradient">
-                <!-- <h4>Q3: <%#= Question.find(@the_questions[2]).content  %></h4> -->
-                <!-- <p><%#= Answer.find_by(question_id: @the_questions[2].id).content %></p> -->
+
+              </div>
+            </div>
+            <div class="card col-xs-12 col-md-4">
+              <div class="text-center card-bg-gradient">
+
               </div>
             </div>
           </div>
@@ -39,6 +37,8 @@
           <h3>Here's our analysis of your positivity levels based on your first response:</h3>
           <div class="card-square" style="background-image: linear-gradient(-225deg, rgba(45,125,92,0.6) 0%, rgba(45,125,92,0.6) 50%);">
             <h3>Put a graph here (bar chart, maybe?)</h3>
+            <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
+            <%= column_chart [["Positivity", @the_questions[0].answer.pos]] %>
           </div>
         </div>
       </div>
@@ -47,6 +47,7 @@
           <h3>And here are the collective results of everyone who's taken the demo so far:</h3>
           <div class="card-square" style="background-image: linear-gradient(-225deg, rgba(45,125,92,0.6) 0%, rgba(45,125,92,0.6) 50%);">
             <h3>Put the line graph here</h3>
+            <%= line_chart ConversationHistory.where(user_id: 1).select {|user_conversation| !user_conversation.answers.average(:pos).nil?}.map {|user_conversation| [user_conversation.created_at, user_conversation.answers.average(:pos)]} %>
           </div>
         </div>
       </div>
