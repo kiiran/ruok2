@@ -1,3 +1,4 @@
+
 <!-- Sidebar -->
 <div id="sidebar">
   <ul>
@@ -52,9 +53,9 @@
         <p>From here, you can manage your teams, data and other settings</p>
       </div>
       <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
-        <h4 class="dark-text">This is your positivity per question! :) </h4>
+        <h4 class="dark-text text-left">This is your positivity per question! :) </h4>
         <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px") %>
+        <%= column_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%", colors: ["orange", "#999"], ) %>
       </div>
     </div>
     <hr class="page-divider">
