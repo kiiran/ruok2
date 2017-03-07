@@ -14,12 +14,14 @@
             </div>
             <div class="card col-xs-12 col-md-4">
               <div class="text-center card-bg-gradient">
-
+                <h4>Q2: <%= Question.find(@the_questions[1].id).content  %></h4>
+                <p><%= Answer.find_by(question_id: @the_questions[1].id).content %></p>
               </div>
             </div>
             <div class="card col-xs-12 col-md-4">
               <div class="text-center card-bg-gradient">
-
+                <h4>Q3: <%= Question.find(@the_questions[2].id).content  %></h4>
+                <p><%= Answer.find_by(question_id: @the_questions[2].id).content %></p>
               </div>
             </div>
           </div>
