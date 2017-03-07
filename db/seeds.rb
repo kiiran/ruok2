@@ -22,21 +22,21 @@ general_template_questions_hash = [
 ]
 
 family_template_questions_hash = [
-  TemplateQuestion.create(subject: "family", question_type: "opening_question", content: "How was the family tody?"),
+  TemplateQuestion.create(subject: "family", question_type: "opening_question", content: "How's your family today?"),
   TemplateQuestion.create(subject: "family", question_type: "neg", content: "Tell me more about what's bothering you at home?"),
   TemplateQuestion.create(subject: "family", question_type: "pos", content: "Tell me more about what's great at home?"),
   TemplateQuestion.create(subject: "family", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?"),
 ]
 
 work_template_questions_hash = [
-  TemplateQuestion.create(subject: "work", question_type: "opening_question", content: "How was the work tody?"),
+  TemplateQuestion.create(subject: "work", question_type: "opening_question", content: "How was work today?"),
   TemplateQuestion.create(subject: "work", question_type: "neg", content: "Tell me more about what's bothering you at work?"),
   TemplateQuestion.create(subject: "work", question_type: "pos", content: "Tell me more about what's great at work?"),
   TemplateQuestion.create(subject: "work", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?"),
 ]
 
 social_template_questions_hash = [
-  TemplateQuestion.create(subject: "social", question_type: "opening_question", content: "How was the social life tody?"),
+  TemplateQuestion.create(subject: "social", question_type: "opening_question", content: "How was the social life today?"),
   TemplateQuestion.create(subject: "social", question_type: "neg", content: "Tell me more about what's bothering you with your social life?"),
   TemplateQuestion.create(subject: "social", question_type: "pos", content: "Tell me more about what's great with your social life?"),
   TemplateQuestion.create(subject: "social", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?"),

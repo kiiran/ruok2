@@ -24,6 +24,19 @@
   border-radius: 2px;
 }
 
+.card-team-members {
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 1px 1px 3px $gray-lighter;
+  height: 100%;
+  margin: 20px;
+  width: 75%;
+  padding: 20px;
+  .picture {
+    margin: 10px;
+  }
+}
+
 .card-big {
   height: 400px;
   width: 100%;
