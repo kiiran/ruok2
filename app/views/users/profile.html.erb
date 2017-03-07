@@ -23,10 +23,12 @@
               <% if group.name.length > 14 %>
                 <% split_name = group.name.split %>
                 <% name_part_one = [] %>
-                <% name_part_two = [] %>
                 <% length = 0; %>
 
                 <% until length >= 14 do %>
+                  <!-- this if statement is to stop the first -->
+                  <!-- line from becoming too long if the next -->
+                  <!-- word is a really long one -->
                   <% if length + split_name[0].length < 19 %>
                     <% name_part_one << split_name[0] %>
                     <% length += split_name[0].length + 1 %>
@@ -36,12 +38,7 @@
                   <% end %>
                 <% end %>
                 <% group_name_part_one = name_part_one.join(" ") %>
-
-                <% until split_name.empty? do %>
-                  <% name_part_two << split_name[0] %>
-                  <% split_name.delete_at(0) %>
-                <% end %>
-                <% group_name_part_two = name_part_two.join(" ") %>
+                <% group_name_part_two = split_name.join(" ") %>
                 <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group_name_part_one}<div style='padding-left: 54px;'>#{group_name_part_two}</div>".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
               <% else %>
                 <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
@@ -51,8 +48,8 @@
           <% end %>
           <li>
             <a class="tab" data-target="#add-team" href="#">
-              <i class="fa fa-plus-square small" aria-hidden="true"></i>
-              Add a Team
+              <i class="fa fa-plus smaller" aria-hidden="true"></i>
+              Add a team
           </li>
         </ul>
       </div>
@@ -76,15 +73,15 @@
 <div class="dashboard">
   <div class="tab-container" id="overview">
     <div class="row">
-      <div class="col-xs-12 col-sm-6" style="padding: 0 5%;">
+      <div class="col-xs-12 col-sm-6">
         <h1 class="dark-green-text">Hi, <%= current_user.first_name %>!</h1>
         <h4 class="dark-green-text">Welcome to your dashboard</h4>
         <p>From here, you can manage your teams, data and other settings</p>
       </div>
-      <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
+      <div class="text-center col-xs-12 col-sm-6">
         <h4 class="dark-text text-left">This is your positivity per question: </h4>
         <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-        <%= column_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%", colors: ["orange", "#999"], ) %>
+        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%", colors: ["orange", "#999"], ) %>
       </div>
     </div>
     <hr class="page-divider">
@@ -93,7 +90,6 @@
     <% total_team_members = 0 %>
     <% total_replies = 0 %>
     <% current_user.groups.each do |group| %>
-      <% total_teams += group.group_memberships.count %>
       <% total_team_members += group.group_memberships.count %>
       <% total_replies += 0 %>
     <% end %>
@@ -126,49 +122,6 @@
     <hr class="page-divider">
   </div>
 
-  <div class="tab-container tab-content-hide" id="your-teams" >
-    <div class="row">
-      <div class="slightly-padded">
-        <% if !current_user.groups.blank? %>
-
-          <% current_user.groups.each do |group| %>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="height: 390px">
-              <!-- card for the group is here -->
-              <% if !group.photo.nil? %>
-                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                url('<%= cl_image_path group.photo.path, gravity: "south" %>')">
-              <% else %>
-                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-              <% end %>
-                  <div class="card-category">
-                    <p><%= group.name %></p>
-                  </div>
-                </div>
-              <!-- end of card for the group -->
-              <div class="" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; ; margin-top: 5px;">
-                <%= link_to 'Show', group_path(group), class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;" %>
-                <%= link_to 'Edit', edit_group_path(group), class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;"  if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true  %>
-                <%= link_to 'Delete', group_path(group), method: :delete, class: "btn btn-card", style: "flex: 1 0 auto; margin: 2px 1px;" if group.group_memberships.where(user_id: current_user.id, group_id: group.id).take.admin == true %>
-              </div>
-              <!-- list of cards for group members is here -->
-              <% group.users.each do |member| %>
-                <div class="card-list" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))">
-                  <p><%= member.first_name + " " + member.last_name %></p>
-                </div>
-              <% end %>
-              <!-- end of list of cards for group members -->
-            </div>
-          <% end %>
-        <% else %>
-          <p>You haven't added any teams yet.</p>
-        <% end %>
-      </div>
-    </div>
-    <div class="wrapper text-center" style="margin-top: 10px;">
-      <%= link_to 'Add a team', new_group_path, class: "btn btn-card" %>
-    </div>
-  </div>
-
   <div class="tab-container tab-content-hide" id="your-stats">
     <div class="row">
       <h3 class="dark-text">Personal Stats!</h3>
@@ -178,14 +131,12 @@
   </div>
 
   <div class="tab-container tab-content-hide" id="add-team">
-    <div style="width: calc(100vw - 300px); padding: 0 5%;"">
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-6" >
-          <h1 class="dark-green-text">Hi, <%= current_user.first_name %>!</h1>
-          <h4 class="dark-green-text">Add a Team!</h4>
-          <div>
-            <%= render :partial => "groups/form" %>
-          </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-6" >
+        <h1 class="dark-green-text">Hi, <%= current_user.first_name %>!</h1>
+        <h4 class="dark-green-text">Add a Team!</h4>
+        <div>
+          <%= render :partial => "groups/form" %>
         </div>
       </div>
     </div>
@@ -223,8 +174,6 @@
       e.preventDefault();
       $(".tab").removeClass('active');
       $(this).addClass('active');
-
-
       $(".tab-container").addClass('tab-content-hide');
       var tabSelector = $(this).data('target');
       $(tabSelector).removeClass('tab-content-hide');
