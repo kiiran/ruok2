@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>R.U.O.K? | <%= params[:action] %></title>
+    <title>ruok? | <%= current_user.nil? ? "keep your employees happy" : "hey, " + current_user.first_name %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">

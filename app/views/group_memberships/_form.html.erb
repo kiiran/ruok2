@@ -1,9 +1,17 @@
 <%= simple_form_for [@group, @group_membership] do |f| %>
   <%= f.error_notification%>
-  <!-- po.input :product_id, collection: Product.all -->
-  <div style="margin: 20px 0">
-    <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email) %>
+  <% if @group_membership.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @group_membership.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
+  <div style="margin: 20px 0">
+    THIS SHOULD BE A FIELD FOR INPUTTING EMAIL ADDRESSES
+  </div>
+<% end %>
   <%= f.button :submit, class: "btn btn-brand-with-bg" %>
 <% end %>
 

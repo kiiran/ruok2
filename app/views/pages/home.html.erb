@@ -74,19 +74,17 @@
   </div>
 </div>
 
-<script>
-  <%= content_for(:after_js) do %>
-    <%= javascript_tag do %>
-      $(document).ready(function() {
+<%= content_for(:after_js) do %>
+  <script>
+    $(document).ready(function() {
 
-        $('#open-questionnaire').on('click', function(event){
-          event.preventDefault();
-          $('#open-questionnaire').parent().hide();
-          $('#questionnaire').fadeIn("slow");
-          $('#answer-text','#q01').focus();
+      $('#open-questionnaire').on('click', function(event){
+        event.preventDefault();
+        $('#open-questionnaire').parent().hide();
+        $('#questionnaire').fadeIn("slow");
+        $('#answer-text','#q01').focus();
 
-        });
       });
-    <% end %>
-  <% end %>
-</script>
+    });
+  </script>
+<% end %>
