@@ -24,32 +24,31 @@
 <%= content_for(:after_js) do %>
   <script>
     $(document).ready(function() {
-    var qId = 1;
+      var qId = 1;
+      $('.answer-submit').on('click', function(event){
+        console.log(qId);
+        if (qId < 3) {
+          event.preventDefault();
+        };
 
-      $('#answer-submit').on('click', function(event){
 
-          if (qId < 3) {
-            event.preventDefault();
-          }
+        var parameters = {
+          "text": $('#answer-text', '#q0' + qId).val(),
+          "question_id": $('#q0' + qId  + " h4").text(),
+          "convo_history_id": "<%= @new_convo_history.id %>",
+          "question_number": qId
+        };
 
+        $.ajax({
+          type: "POST",
+          url: "/answers",
+          data: parameters,
+        });
 
-          var parameters = {
-            "text": $('#answer-text', '#q0' + qId).val(),
-            "question_id": $('#q0' + qId  + " h4").text(),
-            "convo_history_id": "<%= @new_convo_history.id %>",
-            "question_number": qId
-          };
-          $.ajax({
-            type: "POST",
-            url: "/answers",
-            data: parameters,
-          });
-          qId ++;
-          console.log("plus one!")
+        qId ++;
+        console.log("plus one!");
+        console.log(qId);
       });
-
-
-
     });
 
   </script>
