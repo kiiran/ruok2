@@ -35,6 +35,10 @@ class GroupsController < ApplicationController
     redirect_to current_user_profile_path
   end
 
+  def send_questionnaire_to
+    @group.send_questionnaire_to
+  end
+
 private
   def group_params
     params.require(:group).permit(:name, :photo)

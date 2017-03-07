@@ -28,7 +28,7 @@
       <div class="col-xs-12">
 
         <div class="container">
-          <%= link_to "Answer Questionnaire", "#" , class: "btn btn-success", id: "open-questionnaire"%>
+          <%= link_to "Send Questionnaire", "send_questionnaire_to_path" , class: "btn btn-success", id: "send_questionnaire"%>
           <!-- if there is no convo_history, create one: -->
           <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
         </div>
@@ -85,18 +85,4 @@
   </div>
 </div>
 
-<%= content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    <script>
-      $(document).ready(function() {
-        
-        $('#open-questionnaire').on('click', function(event){
-          $('#open-questionnaire').hide();
-          $('#questionnaire').fadeIn("slow");
-          $('#answer-text','#q01').focus();
 
-        });
-      });
-    </script>
-  <% end %>
-<% end %>
