@@ -94,15 +94,16 @@
 
 <%= content_for(:after_js) do %>
   <%= javascript_tag do %>
-    $(document).ready(function() {
+    <script>
+      $(document).ready(function() {
 
-      $('#open-questionnaire').on('click', function(event){
-        $('#open-questionnaire').hide();
-        $('#questionnaire').fadeIn("slow");
-        $('#answer-text','#q01').focus();
+        $('#open-questionnaire').on('click', function(event){
+          $('#open-questionnaire').hide();
+          $('#questionnaire').fadeIn("slow");
+          $('#answer-text','#q01').focus();
 
+        });
       });
-    });
-
+    </script>
   <% end %>
 <% end %>
