@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def profile
     @user = current_user
     @answers = Answer.all
+    @group_new = Group.new
   end
 
 

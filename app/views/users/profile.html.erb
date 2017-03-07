@@ -23,7 +23,9 @@
             </li>
           <% end %>
           <li>
-            <%= link_to "<i class='fa fa-plus smaller' aria-hidden='true'></i> Add a team".html_safe, new_group_path %>
+            <a class="tab" data-target="#add-team" href="#">
+              <i class="fa fa-plus-square small" aria-hidden="true"></i>
+              Add a Team
           </li>
         </ul>
       </div>
@@ -53,7 +55,7 @@
         <p>From here, you can manage your teams, data and other settings</p>
       </div>
       <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
-        <h4 class="dark-text text-left">This is your positivity per question! :) </h4>
+        <h4 class="dark-text text-left">This is your positivity per question: </h4>
         <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
         <%= column_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%", colors: ["orange", "#999"], ) %>
       </div>
@@ -143,8 +145,22 @@
   <div class="tab-container tab-content-hide" id="your-stats">
     <div class="row">
       <h3 class="dark-text">Personal Stats!</h3>
-      <h4 class="dark-text"> This is your negativity per question. Sad. :(</h4>
+      <h4 class="dark-text"> This is your negativity per question:</h4>
       <div class = "col-xs-12 col-sm-6"> <%= bar_chart(Answer.group(:question_id).sum(:neg), width: "600px") %></div>
+    </div>
+  </div>
+
+  <div class="tab-container tab-content-hide" id="add-team">
+    <div style="width: calc(100vw - 300px); padding: 0 5%;"">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6" >
+          <h1 class="dark-green-text">Hi, <%= current_user.first_name %>!</h1>
+          <h4 class="dark-green-text">Add a Team!</h4>
+          <div>
+            <%= render :partial => "groups/form" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
