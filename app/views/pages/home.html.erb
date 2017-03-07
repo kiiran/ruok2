@@ -68,7 +68,8 @@
       <%= link_to "Try it Now", "#" , class: "btn btn-success btn-lg", id: "open-questionnaire"%>
     </div>
     <div class="container" id="questionnaire" style="display: none;">
-      <%= render 'questionnaire'  %>
+      <!-- questionnaire will render here -->
+      <%= render'questionnaire'  %>
     </div>
 
   </div>
@@ -80,6 +81,7 @@
       $(document).ready(function() {
 
         $('#open-questionnaire').on('click', function(event){
+          event.preventDefault();
           $('#open-questionnaire').parent().hide();
           $('#questionnaire').fadeIn("slow");
           $('#answer-text','#q01').focus();
