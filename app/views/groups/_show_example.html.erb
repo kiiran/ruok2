@@ -1,3 +1,4 @@
+
 <div class="wrapper padded">
   <div class="container" style="border-style: dashed;">
     <div class="row">
@@ -30,7 +31,7 @@
         <div class="container">
           <%= link_to "Answer Questionnaire", "#" , class: "btn btn-success", id: "open-questionnaire"%>
           <!-- if there is no convo_history, create one: -->
-         <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
+          <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
         </div>
         <!-- jquery for this at the bottom of this page-->
         <div class="wrapper" id="questionnaire" style="display: none; border-style: dashed; width: 100%;">
