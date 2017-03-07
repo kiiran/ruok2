@@ -24,9 +24,16 @@ $base-height: 1.4;
  * Colors
  * ------------------------------------- */
 // Scheme
-$brand-color: #2D7D5C;
-$brand-dark: #236348;
-$brand-light: #A5FFD8;
+// .color-primary-0 { color: #2D7D5D }
+// .color-primary-1 { color: #7EB8A1 }
+// .color-primary-2 { color: #50997C }
+// .color-primary-3 { color: #166445 }
+// .color-primary-4 { color: #03462B }
+
+$brand-color: #2D7D5D;
+$brand-light: #7EB8A1;
+$brand-dark: #166445;
+$brand-darker: #03462B;
 $facebook-blue: #3b5998;
 $facebook-blue-light: #4D75C6;
 
@@ -37,5 +44,6 @@ $orange: #E67E22;
 $green: #32B796;
 $gray: #969696;
 $gray-lighter: #E8E8E8;
+$dark-text: #2E2C2F;
 
 $footer-gray: #151515;

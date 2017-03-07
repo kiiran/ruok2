@@ -38,6 +38,15 @@ body {
   padding: 0;
   color: $gray;
 }
+
+.dark-text {
+  color: $dark-text;
+}
+
+.dark-green-text {
+  color: $brand-dark;
+}
+
 #wrapper {
   min-height: 100%;
   position: relative;
@@ -51,10 +60,14 @@ body {
   // z-index: 2;
 }
 
+.remove-margin-bottom {
+  margin-bottom: 0;
+}
+
 hr.page-divider {
   border: 0;
   height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to right, rgba(3,70,43, 0), rgba(3,70,43, 0.15), rgba(3,70,43, 0));
 }
 
 a {
@@ -94,3 +107,4 @@ ul li img {
   border-radius: 5px;
   margin-right: 15px;
 }
+
