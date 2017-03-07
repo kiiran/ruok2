@@ -1,4 +1,3 @@
-
 if ($('#q02').is(":visible")) {
 
   console.log("Gone to question 3");
@@ -8,7 +7,7 @@ if ($('#q02').is(":visible")) {
   <!-- show next question: -->
 
 
-  <% third = TemplateQuestion.sample_of_subject('neg-solution') %>
+  <% third = TemplateQuestion.sample_of_question_type('neg-solution') %>
 
   var questionThree = "<%= third.content %>";
   var questionThreeId = "<%= third.id %>";
@@ -23,16 +22,7 @@ if ($('#q02').is(":visible")) {
   $('.btn', '#q01').css("visibility","hidden");
   $('#q01').fadeTo("slow",0.3);
 
-  // <!-- var answer_one_analysis = "<%= @answer.label %>" -->
-  // <!-- if (answer_one_analysis == "neg") { -->
-  // <!--   ###Negative question -->
-  // <!-- } else if (answer_one_analysis == "pos") { -->
-  // <!--   ###Positive question -->
-  // <!-- } else { -->
-  // <!--   ###Neutral question_id -->
-  // <!-- } -->
-
-  <% second = TemplateQuestion.sample_of_subject('neg') %>
+  <% second = TemplateQuestion.sample_of_question_type('neg') %>
 
   var questionTwo = "<%= second.content %>";
   var questionTwoId = "<%= second.id %>";
