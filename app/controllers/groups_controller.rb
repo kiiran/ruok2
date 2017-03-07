@@ -35,6 +35,10 @@ class GroupsController < ApplicationController
     redirect_to current_user_profile_path
   end
 
+  def send_questionnaire_to
+    @group.send_questionnaire_to
+  end
+  
   def form
     @new_convo_history = ConversationHistory.new
     @new_convo_history.user = User.first
