@@ -25,8 +25,7 @@
           <!-- <div class="badge badge-blue">3</div> -->
         <!-- </div> -->
       <%# end %>
-      <%= link_to "Your teams", user_groups_path(current_user.id), class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Stats", current_user_profile_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Dashboard", current_user_profile_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -38,13 +37,7 @@
           <% else %>
             <%= image_tag 'default-user-image.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
-
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to current_user_profile_path do %>
-                <i class="fa fa-user"></i>  <%= t(".profile", default: "Dashboard") %>
-              <% end %>
-            </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
@@ -52,13 +45,14 @@
             </li>
           </ul>
         </div>
+          <i class="fa fa-caret-down smaller" style="color: #2E2C2F; position: absolute; right: 0;" aria-hidden="true"></i>
       </div>
 
     <% else %>
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Log in"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link btn btn-brand-with-bg" %>
+      <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item btn btn-brand-with-bg" %>
 
     <% end %>
 

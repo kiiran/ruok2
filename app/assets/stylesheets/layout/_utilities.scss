@@ -70,6 +70,13 @@ hr.page-divider {
   background-image: linear-gradient(to right, rgba(3,70,43, 0), rgba(3,70,43, 0.15), rgba(3,70,43, 0));
 }
 
+hr.page-divider-white {
+  border: 0;
+  margin: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(255,255,255, 0), rgba(255,255,255, 0.15), rgba(255,255,255, 0));
+}
+
 a {
   color: $gray;
   transition: all 0.2s ease;
