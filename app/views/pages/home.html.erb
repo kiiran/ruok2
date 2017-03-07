@@ -29,7 +29,7 @@
 </div>
 
 <div class="wrapper">
-  <div class="banner" style="background-image: linear-gradient(45deg, rgba(120,70,92,0.7), rgba(0,0,0,0.9)), url(<%= asset_path 'code-data-processing.jpg' %>);">
+  <div class="banner" style="background-image: linear-gradient(45deg, rgba(120,70,92,0.7), rgba(0,0,0,0.9)), url(<%= asset_path 'notebook-mac-desk-man.jpg' %>);">
     <div class="container">
       <div class="secondary-banner">
         <div class="secondary-banner-content">
@@ -60,68 +60,33 @@
 </div>
 
 <div class="wrapper">
-  <div class="banner" style="background-image: linear-gradient(-45deg, rgba(120,70,92,0.7), rgba(45,125,92,0.7)), url(<%= asset_path 'banner-stressed-coder.jpg' %>);">
+  <div class="banner" style="background-image: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url(<%= asset_path '#' %>);">
     <div class="container">
-      <div class="banner-content">
-        <div id="home-banner-form">
-          <h2>Follow the team's mood on a weekly basis!</h2>
-          <h3>This is what team members would get:</h3>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <div class="home-question" id="q01">
-              <% template_question_1 = TemplateQuestion.sample_of_question_type("opening_question") %>
-              <h2><%= template_question_1.content %></h2>
-              <h4 class="hidden"><%= template_question_1.id %></h4>
-              <%= render 'form_question' %>
-            </div>
-            <div class="home-question" id="q02" style="display: none;">
-              <h2></h2>
-              <h4 class="hidden"></h4>
-              <%= render 'form_question' %>
-            </div>
-            <div class="home-question" id="q03" style="display: none;">
-              <h2></h2>
-              <h4 class="hidden"></h4>
-              <%= render 'form_question' %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h5>Answer the 3-question form your team mates would receive weekly/monthly.</h5>
+      <h5>See an example of the statistics you would get.</h5>
+      <%= link_to "Try it Now", "#" , class: "btn btn-success btn-lg", id: "open-questionnaire"%>
+    </div>
+    <div class="container" id="questionnaire" style="display: none;">
+      <!-- questionnaire will render here -->
+      <%= render'questionnaire'  %>
     </div>
 
   </div>
 </div>
 
-<%= content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-    var qId = 1;
+<script>
+  <%= content_for(:after_js) do %>
+    <%= javascript_tag do %>
+      $(document).ready(function() {
 
-      $('.btn').on('click', function(event){
+        $('#open-questionnaire').on('click', function(event){
+          event.preventDefault();
+          $('#open-questionnaire').parent().hide();
+          $('#questionnaire').fadeIn("slow");
+          $('#answer-text','#q01').focus();
 
-          if (qId < 3) {
-            event.preventDefault();
-          }
-
-
-          var parameters = {
-            "text": $('#answer-text', '#q0' + qId).val(),
-            "question_id": $('#q0' + qId  + " h4").text(),
-            "convo_history_id": "<%= @new_convo_history.id %>",
-            "question_number": qId
-          };
-          $.ajax({
-            type: "POST",
-            url: "/answers",
-            data: parameters,
-          });
-          qId ++;
+        });
       });
-
-
-
-    });
-
-  </script>
-<% end %>
+    <% end %>
+  <% end %>
+</script>
