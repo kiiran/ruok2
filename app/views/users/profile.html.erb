@@ -15,12 +15,39 @@
         <i class="fa fa-caret-down smaller" aria-hidden="true"></i>
         <i class="fa fa-caret-up smaller tab-content-hide" aria-hidden="true"></i>
       </a>
+      <!-- The next chunk is for the Teams dropdown menu -->
       <div id="dropdown-menu" class="tab-content-hide">
         <ul>
           <% current_user.groups.each do |group| %>
             <li>
-              <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
+              <% if group.name.length > 14 %>
+                <% split_name = group.name.split %>
+                <% name_part_one = [] %>
+                <% name_part_two = [] %>
+                <% length = 0; %>
+
+                <% until length >= 14 do %>
+                  <% if length + split_name[0].length < 19 %>
+                    <% name_part_one << split_name[0] %>
+                    <% length += split_name[0].length + 1 %>
+                    <% split_name.delete_at(0) %>
+                  <% else %>
+                    <% length = 100 %>
+                  <% end %>
+                <% end %>
+                <% group_name_part_one = name_part_one.join(" ") %>
+
+                <% until split_name.empty? do %>
+                  <% name_part_two << split_name[0] %>
+                  <% split_name.delete_at(0) %>
+                <% end %>
+                <% group_name_part_two = name_part_two.join(" ") %>
+                <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group_name_part_one}<div style='padding-left: 54px;'>#{group_name_part_two}</div>".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
+              <% else %>
+                <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
+              <% end %>
             </li>
+            <hr class="page-divider-white">
           <% end %>
           <li>
             <%= link_to "<i class='fa fa-plus smaller' aria-hidden='true'></i> Add a team".html_safe, new_group_path %>
