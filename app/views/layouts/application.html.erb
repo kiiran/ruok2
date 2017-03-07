@@ -17,7 +17,7 @@
         <%= render 'shared/flashes' %>
         <%= yield %>
       </section>
-      <% if !current_page?(root_path) %>
+      <% if !current_page?(root_path) && !current_page?(current_user_profile_path) %>
         <section id="footer">
           <%= render 'layouts/footer' %>
         </section>
