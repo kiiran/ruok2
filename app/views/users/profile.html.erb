@@ -52,6 +52,60 @@
               Add a team
           </li>
         </ul>
+
+     <ul>
+          <% group_counter = 1 %>
+          <% group_id_array = [] %>
+          <% group_target_id_array = []%>
+
+          <% current_user.groups.each do |group| %>
+          <% group_target = "#group-#{group_counter}"%>
+            <li>
+              <% if group.name.length > 14 %>
+                <% split_name = group.name.split %>
+                <% name_part_one = [] %>
+                <% length = 0; %>
+
+                <% until length >= 14 do %>
+                  <!-- this if statement is to stop the first -->
+                  <!-- line from becoming too long if the next -->
+                  <!-- word is a really long one -->
+                  <% if length + split_name[0].length < 19 %>
+                    <% name_part_one << split_name[0] %>
+                    <% length += split_name[0].length + 1 %>
+                    <% split_name.delete_at(0) %>
+                  <% else %>
+                    <% length = 100 %>
+                  <% end %>
+                <% end %>
+                <% group_name_part_one = name_part_one.join(" ") %>
+                <% group_name_part_two = split_name.join(" ") %>
+
+                <a class="tab" data-target=<%=group_target%> href="#">
+                <i class='fa fa-arrow-right smaller' aria-hidden="true"></i>
+                <%= group_name_part_one %>
+                <div style='padding-left: 54px;'> <%= group_name_part_two %> <%= group_counter %> </div>
+
+                <% group_id_array << group.id %>
+                <% group_target_id_array << "group-#{group_counter}" %>
+                <%= group_target %>
+                <%= group_target_id_array.last %>
+
+              <% else %>
+                <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
+              <% end %>
+              <% group_counter += 1 %>
+            </li>
+            <hr class="page-divider-white">
+          <% end %>
+          <li>
+            <a class="tab" data-target="#add-team" href="#">
+              <i class="fa fa-plus smaller" aria-hidden="true"></i>
+              Add a team
+          </li>
+        </ul>
+
+
       </div>
     </li>
     <li>
@@ -139,6 +193,15 @@
           <%= render :partial => "groups/form" %>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="tab-container tab-content-hide" id=group-6 >
+    <div class="row">
+        <div>
+        <h1> " I'm a render page </h1>
+          <%= " I'm going to render some stuff :) "%>
+        </div>
     </div>
   </div>
 
