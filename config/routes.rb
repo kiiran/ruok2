@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   root to: 'pages#home'
 
+  post '/groups', to: 'groups#send_questionnaire_to', as: 'send_questionnaire_to'
+
   resources :users do
     resources :conversation_histories, only: [:new, :create, :show, :destroy]
     resources :groups, only: [:index, :show]

@@ -4,4 +4,9 @@ class Group < ApplicationRecord
   has_many :users, through: :group_memberships
   has_one :conversation_history, dependent: :destroy
   has_attachment :photo
+
+  def send_questionnaire_to
+    UserMailer.send_questionnaire_to(this).deliver_now
+    alert('email request sent')
+  end
 end
