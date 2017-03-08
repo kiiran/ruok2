@@ -17,42 +17,6 @@
       </a>
       <!-- The next chunk is for the Teams dropdown menu -->
       <div id="dropdown-menu" class="tab-content-hide">
-        <ul>
-          <% current_user.groups.each do |group| %>
-            <li>
-              <% if group.name.length > 14 %>
-                <% split_name = group.name.split %>
-                <% name_part_one = [] %>
-                <% length = 0; %>
-
-                <% until length >= 14 do %>
-                  <!-- this if statement is to stop the first -->
-                  <!-- line from becoming too long if the next -->
-                  <!-- word is a really long one -->
-                  <% if length + split_name[0].length < 19 %>
-                    <% name_part_one << split_name[0] %>
-                    <% length += split_name[0].length + 1 %>
-                    <% split_name.delete_at(0) %>
-                  <% else %>
-                    <% length = 100 %>
-                  <% end %>
-                <% end %>
-                <% group_name_part_one = name_part_one.join(" ") %>
-                <% group_name_part_two = split_name.join(" ") %>
-                <%= link_to "<i class='fa fa-arrow-right smaller hide-fa' aria-hidden='true'></i> #{group_name_part_one}<div style='padding-left: 54px;'>#{group_name_part_two}</div>".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
-              <% else %>
-                <%= link_to "<i class='fa fa-arrow-right smaller hide-fa' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
-              <% end %>
-            </li>
-            <hr class="page-divider-white">
-          <% end %>
-          <li>
-            <a class="tab" data-target="#add-team" href="#">
-              <i class="fa fa-plus smaller" aria-hidden="true"></i>
-              Add a team
-          </li>
-        </ul>
-
      <ul>
           <% group_counter = 1 %>
           <% group_id_array = [] %>
@@ -82,22 +46,22 @@
                 <% group_name_part_two = split_name.join(" ") %>
 
                 <a class="tab" data-target=<%=group_target%> href="#">
-                <i class='fa fa-arrow-right smaller' aria-hidden="true"></i>
+                <i class='fa fa-arrow-right smaller hide-fa' aria-hidden="true"></i>
                 <%= group_name_part_one %>
-                <div style='padding-left: 54px;'> <%= group_name_part_two %> <%= group_counter %> </div>
+                <div style='padding-left: 54px;'> <%= group_name_part_two %></div>
 
                 <% group_id_array << group.id %>
                 <% group_target_id_array << "group-#{group_counter}" %>
 
               <% else %>
                 <a class="tab" data-target=<%=group_target%> href="#">
-                <i class='fa fa-arrow-right smaller' aria-hidden="true"></i>
+                <i class='fa fa-arrow-right smaller hide-fa' aria-hidden="true"></i>
                 <%= group_name_part_one %>
-                <div style='padding-left: 54px;'> <%= group.name %> </div>
+                <%= group.name %>
 
                 <% group_id_array << group.id %>
                 <% group_target_id_array << "group-#{group_counter}" %>
-                <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
+
               <% end %>
               <% group_counter += 1 %>
             </li>
