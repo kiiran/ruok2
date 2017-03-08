@@ -54,13 +54,12 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <%= link_to "Answer Questionnaire", "#" , class: "btn btn-success", id: "open-questionnaire"%>
-        (Not sure this button needs to be here)
+        <%= link_to "questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-success", id: "open-questionnaire"%>
         <!-- if there is no convo_history, create one: -->
         <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
         <!-- jquery for this at the bottom of this page-->
         <div class="wrapper" id="questionnaire" style="display: none; width: 100%;">
-          <%#= render 'questionnaire' %>
+          <%= render 'pages/questionnaire' %>
         </div>
       </div>
     </div>
