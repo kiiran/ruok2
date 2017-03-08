@@ -1,3 +1,4 @@
+<div class="container">
 <div class="row">
   <!-- group stats and name here -->
   <div class="col-xs-12 col-sm-6">
@@ -61,8 +62,9 @@
     <div class="container text-center">
       <% if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true %>
         <%= link_to "Add team members", new_group_group_membership_path(group_id: @group.id), method: :get, class: "btn btn-brand-with-bg" %>
+        <%= link_to "Delete team", group_path(id: @group.id), method: :delete, class: "btn btn-dangerous" %>
       <% end %>
-
+      
       <%= link_to "Questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-default", id: "open-questionnaire"%>
       <!-- if there is no convo_history, create one: -->
       <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
@@ -77,6 +79,8 @@
     </div>
   </div>
 </div>
+
+
 
 <%= content_for(:after_js) do %>
   <script>
