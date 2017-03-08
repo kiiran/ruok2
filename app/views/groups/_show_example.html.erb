@@ -1,18 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="">
-      <!-- group stats and name here -->
-      <div class="col-xs-12 col-sm-6">
-        <h1 class="dark-green-text"><%= @group.name %></h1>
-        <h4 class="dark-green-text">Overall positivity:</h4>
+<div class="row">
+  <!-- group stats and name here -->
+  <div class="col-xs-12">
+    <h1 class="dark-green-text"><%= @group.name %></h1>
+    <h4 class="dark-green-text">Overall positivity:</h4>
 
-        <h4 class="dark-green-text">Overall negativity:</h4>
-      </div>
-      <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
-        <h3 class="dark-green-text">This group's positivity levels</h3>
-        <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px") %>
-      </div>
+    <h4 class="dark-green-text">Overall negativity:</h4>
+  </div>
+</div>
+<div class="row">
+  <!-- group stats and name here -->
+  <div class="text-center col-xs-12" >
+    <h3 class="dark-green-text">This group's positivity levels</h3>
+    <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
+    <div class="chart-border" style="height: 800px, width: 100%, padding-right: 10px">
+      <%= line_chart(Answer.group(:question_id).sum(:pos), height: "99%", width: "100%") %>
     </div>
   </div>
 </div>
@@ -59,19 +61,46 @@
     <% end %>
   </div>
 </div>
-<div class="wrapper padded text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <%= link_to "Answer Questionnaire", "#" , class: "btn btn-success", id: "open-questionnaire"%>
-        (Not sure this button needs to be here)
-        <!-- if there is no convo_history, create one: -->
-        <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
-        <!-- jquery for this at the bottom of this page-->
-        <div class="wrapper" id="questionnaire" style="display: none; width: 100%;">
-          <%#= render 'questionnaire' %>
+
+
+<div class="row">
+  <div class="col-xs-6 col-md-4 col-lg-3">
+    <% @group.users.each do |user| %>
+      <div class="card-team-members text-center">
+        <div class="picture">
+          <% if !user.photo.nil? %>
+            <%= cl_image_tag current_user.photo.path, width: 100, height: 100, gravity: :face, crop: :fill, class: "avatar-medium" %>
+          <% elsif !current_user.facebook_picture_url.nil? %>
+            <%= image_tag current_user.facebook_picture_url, class: "avatar-medium" %>
+          <% else %>
+            <%= image_tag 'default-member-image.png', class: "avatar-medium" %>
+          <% end %>
+        </div>
+        <div class="member-info">
+          <p class="remove-margin-bottom"><%= user.first_name + " " + user.last_name %></p>
+          <p style="font-size: 12px;"><%= user.email %></p>
+          <%= link_to "remove?", group_group_membership_path(@group.id, user), method: :delete, class: "tiny-link" %>
+
         </div>
       </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <% if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true %>
+      <%= link_to "Add team members", new_group_group_membership_path(group_id: @group.id), method: :get, class: "btn btn-brand-with-bg" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to "questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-success", id: "open-questionnaire"%>
+    <!-- if there is no convo_history, create one: -->
+    <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
+    <!-- jquery for this at the bottom of this page-->
+    <div class="wrapper" id="questionnaire" style="display: none; width: 100%;">
+      <%#= render 'questionnaire' %>
     </div>
   </div>
 </div>

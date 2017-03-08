@@ -39,7 +39,7 @@
             <div class="col-xs-12" style="padding-bottom: 1em;">
             <div class="" style="background: white; color: #969696;">
               <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-              <%= column_chart [["Question 1", @the_questions[0].answer.pos], ["Question 2", @the_questions[1].answer.pos], ["Question 3", @the_questions[2].answer.pos]] %>
+              <%= column_chart [["Question 1", @the_questions[0].answer.pos], ["Question 2", @the_questions[1].answer.pos], ["Question 3", @the_questions[2].answer.pos]], colors: ["orange", "#999"] %>
             </div>
             </div>
           </div>
