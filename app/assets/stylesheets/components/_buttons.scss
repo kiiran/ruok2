@@ -2,7 +2,7 @@
 .btn-facebook:link,
 .btn-facebook:visited {
   font-weight: bold;
-  padding: 11px 22px;
+  padding: 11px 15px;
   border-radius: 4px;
   background-color: $facebook-blue-light;
   color: white;
@@ -15,6 +15,26 @@
   background-color: $facebook-blue;
   transition: all 0.2s ease;
 }
+
+.btn-linkedin,
+.btn-linkedin:link,
+.btn-linkedin:visited {
+  font-weight: bold;
+  padding: 11px 15px;
+  border-radius: 4px;
+  background-color: $linkedin-blue-light;
+  color: white;
+  transition: all 0.2s ease;
+  margin: 5px;
+}
+
+.btn-linkedin:hover {
+  color: white;
+  background-color: $linkedin-blue;
+  transition: all 0.2s ease;
+}
+
+
 
 .btn-brand {
   padding: 8px 20px;
