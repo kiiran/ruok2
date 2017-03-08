@@ -206,10 +206,7 @@
     <div class="tab-container tab-content-hide" id=<%=id.to_s%>>
       <div class="row">
         <div>
-        <h1> " I'm a render page  hummm...</h1>
-          <%= " I'm going to render some stuff :) "%>
-          <%= index_group_selector %>
-          <%= group_id_array[index_group_selector] %>
+          <%= render :partial => "groups/show_example", group_object: (@group = Group.find(group_id_array[index_group_selector]))  ,user_id: current_user.id, id: group_id_array[index_group_selector]  %>
         </div>
       </div>
       <% index_group_selector += 1 %>
