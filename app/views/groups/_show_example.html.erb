@@ -38,6 +38,7 @@
             <div class="member-info">
               <p class="remove-margin-bottom"><%= user.first_name + " " + user.last_name %></p>
               <p style="font-size: 12px;"><%= user.email %></p>
+              <%= link_to "remove?", group_group_membership_path(@group.id, user), method: :delete, class: "tiny-link" %>
             </div>
           </div>
         </div>

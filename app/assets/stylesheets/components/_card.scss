@@ -37,6 +37,19 @@
   }
 }
 
+.tiny-link {
+  font-size: 12px;
+  font-weight: bold;
+  color: $gray;
+  transition: all 0.2s ease;
+  float: right;
+}
+
+.tiny-link:hover {
+  color: $red;
+  transition: all 0.2s ease;
+}
+
 .card-big {
   height: 400px;
   width: 100%;
