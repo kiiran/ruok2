@@ -8,6 +8,17 @@ class ConversationHistoriesController < ApplicationController
   def new
     @ch = ConversationHistory.find(params["conversation_history_id"])
     @the_questions = @ch.questions
+
+    @the_question_1 = Question.find(@the_questions[0]).content
+    @the_answer_1 = Answer.find_by(question_id: @the_questions[0].id).content
+
+    @the_question_2 = Question.find(@the_questions[1]).content
+    @the_answer_2 = Answer.find_by(question_id: @the_questions[1].id).content
+
+    @the_question_3 = Question.find(@the_questions[2]).content
+    @the_answer_3 = Answer.find_by(question_id: @the_questions[2].id).content
+
+
   end
 
   def show
