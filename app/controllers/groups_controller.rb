@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
   end
 
   def send_questionnaire_to
-    @group.send_questionnaire_to
+    # @group.send_questionnaire_to
   end
 
   def form

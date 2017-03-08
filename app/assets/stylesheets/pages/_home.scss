@@ -18,14 +18,36 @@
 }
 
 .secondary-banner{
+  width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
 
 }
 
 .secondary-banner-content{
   background-color: rgba(20,20,20,0.3);
-  flex: 0 1 500px;
+  flex: 0 1 400px;
   padding: 30px 30px;
   margin: 0 30px;
+}
+.secondary-banner-img{
+  flex: 0 1 500px;
+  height: 300px;
+  background-size: cover !important;
+  background-position: center;
+  border-radius: 3px;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+.auto-height{
+  height: auto;
+  padding: 90px 0;
+}
+
+.home-queston{
+
 }
