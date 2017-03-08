@@ -9,10 +9,10 @@ if ($('#q02').is(":visible")) {
 
   <% third = TemplateQuestion.sample_of_question_type('neg-solution') %>
 
-  var questionThree = "<%= third.content %>";
+  var questionThree = "3: <%= third.content %>";
   var questionThreeId = "<%= third.id %>";
   $('#q03').fadeIn("slow");
-  $('h2','#q03').html(questionThree);
+  $('h3','#q03').html(questionThree);
   $('h4','#q03').html(questionThreeId);
   $('#answer-text','#q03').focus();
 
@@ -24,12 +24,12 @@ if ($('#q02').is(":visible")) {
 
   <% second = TemplateQuestion.sample_of_question_type('neg') %>
 
-  var questionTwo = "<%= second.content %>";
+  var questionTwo = "2: <%= second.content %>";
   var questionTwoId = "<%= second.id %>";
 
   $('#q02').fadeIn("slow");
   // <!-- $('.form-question'>'input','#q02').focus(); -->
-  $('h2','#q02').html(questionTwo);
+  $('h3','#q02').html(questionTwo);
   $('h4','#q02').html(questionTwoId);
 
   $('#answer-text','#q02').focus();
