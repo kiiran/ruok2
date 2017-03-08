@@ -36,9 +36,9 @@ class GroupsController < ApplicationController
   end
 
   def send_questionnaire_to
-    @group.send_questionnaire_to
+    # @group.send_questionnaire_to
   end
-  
+
   def form
     @new_convo_history = ConversationHistory.new
     @new_convo_history.user = User.first

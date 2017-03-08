@@ -18,14 +18,29 @@
 }
 
 .secondary-banner{
+  width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
 
 }
 
 .secondary-banner-content{
   background-color: rgba(20,20,20,0.3);
-  flex: 0 1 500px;
+  flex: 0 1 400px;
   padding: 30px 30px;
   margin: 0 30px;
+}
+.secondary-banner-img{
+  flex: 0 1 600px;
+  height: 500px;
+  background-size: cover !important;
+  background-position: center;
+}
+
+
+.auto-height{
+  height: auto;
+  padding: 90px 0;
 }
