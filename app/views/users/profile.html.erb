@@ -165,14 +165,11 @@
     </div>
   </div>
 
-  <% index_group_selector = 0 %>
+  <% index_group_selector = 0 %>  <!-- render groups/_show_example -->
   <% group_target_id_array.each do |id| %>
-    <div class="tab-container tab-content-hide" id=<%=id.to_s%>>
-      <div class="row">
-        <div>
-          <%= render :partial => "groups/show_example", group_object: (@group = Group.find(group_id_array[index_group_selector]))  ,user_id: current_user.id, id: group_id_array[index_group_selector]  %>
-        </div>
-      </div>
+    <div class="tab-container tab-content-hide" id=<%= id.to_s %>>
+      <%= render :partial => "groups/show_example", group_object: (@group = Group.find(group_id_array[index_group_selector])), user_id: current_user.id, id: group_id_array[index_group_selector] %>
+
       <% index_group_selector += 1 %>
     </div>
   <% end %>
@@ -205,6 +202,7 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(function(){
+
     $(".tab").on("click", function(e){
       e.preventDefault();
       $(".tab").removeClass('active');
