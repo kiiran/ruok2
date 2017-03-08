@@ -277,4 +277,10 @@ Devise.setup do |config|
     info_fields: 'email, first_name, last_name',
     image_size: 'large',
     secure_image_url: true
+
+  config.omniauth :linkedin, ENV["LINKEDIN_ID"], ENV["LINKEDIN_SECRET"],
+    scope: 'email',
+    info_fields: 'email, first_name, last_name',
+    image_size: 'large',
+    secure_image_url: true
 end

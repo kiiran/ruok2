@@ -39,9 +39,9 @@
                 <% end %>
                 <% group_name_part_one = name_part_one.join(" ") %>
                 <% group_name_part_two = split_name.join(" ") %>
-                <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group_name_part_one}<div style='padding-left: 54px;'>#{group_name_part_two}</div>".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
+                <%= link_to "<i class='fa fa-arrow-right smaller hide-fa' aria-hidden='true'></i> #{group_name_part_one}<div style='padding-left: 54px;'>#{group_name_part_two}</div>".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
               <% else %>
-                <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
+                <%= link_to "<i class='fa fa-arrow-right smaller hide-fa' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
               <% end %>
             </li>
             <hr class="page-divider-white">
