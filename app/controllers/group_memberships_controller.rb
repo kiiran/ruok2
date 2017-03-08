@@ -12,6 +12,11 @@ class GroupMembershipsController < ApplicationController
 
   def new
     @group_membership = GroupMembership.new
+    @user1 = User.new
+    @user2 = User.new
+    @user3 = User.new
+    @user4 = User.new
+    @user5 = User.new
   end
 
   def create
