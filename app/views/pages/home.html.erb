@@ -2,10 +2,12 @@
   <div class="banner" style="background-image: linear-gradient(-45deg, rgba(30,70,102,0.7), rgba(30,100,70,0.7)), url(<%= asset_path 'banner-happy-girl.jpg' %>);">
     <div class="container">
       <div class="banner-content">
-        <h1>Happy teams are productive teams!</h1>
-        <h2>The app for following your team's mood</h2>
-        <div class="container padded">
-          <%= link_to "Start Now", "/profile" , class: "btn btn-primary btn-lg" %>
+        <div class="padded">
+          <h1>Happy teams are productive teams!</h1>
+          <h2>The app for following your team's mood</h2>
+        </div>
+        <div class="slightly-padded">
+          <%= link_to "Start now", "/profile" , class: "btn btn-home-page-large" %>
         </div>
       </div>
     </div>
