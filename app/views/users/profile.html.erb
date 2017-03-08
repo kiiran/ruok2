@@ -88,8 +88,6 @@
 
                 <% group_id_array << group.id %>
                 <% group_target_id_array << "group-#{group_counter}" %>
-                <%= group_target %>
-                <%= group_target_id_array.last %>
 
               <% else %>
                 <a class="tab" data-target=<%=group_target%> href="#">
@@ -99,9 +97,6 @@
 
                 <% group_id_array << group.id %>
                 <% group_target_id_array << "group-#{group_counter}" %>
-                <%= group_target %>
-                <%= group_target_id_array.last %>
-
                 <%= link_to "<i class='fa fa-arrow-right smaller' aria-hidden='true'></i> #{group.name}".html_safe, user_group_path({user_id: current_user.id, id: group.id}) %>
               <% end %>
               <% group_counter += 1 %>
@@ -206,14 +201,20 @@
     </div>
   </div>
 
-  <div class="tab-container tab-content-hide" id=group-6 >
-    <div class="row">
+  <% index_group_selector = 0 %>
+  <% group_target_id_array.each do |id| %>
+    <div class="tab-container tab-content-hide" id=<%=id.to_s%>>
+      <div class="row">
         <div>
         <h1> " I'm a render page  hummm...</h1>
           <%= " I'm going to render some stuff :) "%>
+          <%= index_group_selector %>
+          <%= group_id_array[index_group_selector] %>
         </div>
+      </div>
+      <% index_group_selector += 1 %>
     </div>
-  </div>
+  <% end %>
 
   <div class="tab-container tab-content-hide" id="settings" >
     <div class="row">
