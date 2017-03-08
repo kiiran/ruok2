@@ -1,18 +1,18 @@
       <div class="banner-content">
         <div class="row">
           <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <div class="home-question" id="q01">
+            <div class="home-question text-left" id="q01">
               <% template_question_1 = TemplateQuestion.sample_of_question_type("opening_question") %>
               <h2><%= template_question_1.content %></h2>
               <h4 class="hidden"><%= template_question_1.id %></h4>
               <%= render 'pages/form_question' %>
             </div>
-            <div class="home-question" id="q02" style="display: none;">
+            <div class="home-question text-left" id="q02" style="display: none;">
               <h2></h2>
               <h4 class="hidden"></h4>
               <%= render 'pages/form_question' %>
             </div>
-            <div class="home-question" id="q03" style="display: none;">
+            <div class="home-question text-left" id="q03" style="display: none;">
               <h2></h2>
               <h4 class="hidden"></h4>
               <%= render 'pages/form_question' %>
