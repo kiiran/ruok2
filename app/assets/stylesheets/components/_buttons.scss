@@ -63,6 +63,7 @@
   color: $brand-color;
   transition: all 0.2s ease;
 }
+
 .btn-brand-with-bg {
   padding: 8px 20px;
   background-color: $brand-color;
@@ -81,6 +82,25 @@
   transition: all 0.2s ease;
   text-shadow: none;
   border-color: $brand-color;
+}
+
+.btn-dangerous {
+  padding: 8px 20px;
+  background-color: $red;
+  border-radius: 4px;
+  border: solid $red 1.5px;
+  color: $light-pink;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.btn-dangerous:hover {
+  background-color: $dark-red;
+  border-color: $dark-red;
+  color: white;
+  transition: all 0.2s ease;
+  text-shadow: none;
 }
 
 .btn-yellow {

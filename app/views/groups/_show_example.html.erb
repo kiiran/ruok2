@@ -1,19 +1,17 @@
-<div class="wrapper padded">
-  <div class="container">
-    <div class="row">
-      <div class="">
-        <!-- group stats and name here -->
-        <div class="col-xs-12 col-sm-6">
-          <h1 class="dark-green-text"><%= @group.name %></h1>
-          <h4 class="dark-green-text">Overall positivity:</h4>
+<div class="container">
+  <div class="row">
+    <div class="">
+      <!-- group stats and name here -->
+      <div class="col-xs-12 col-sm-6">
+        <h1 class="dark-green-text"><%= @group.name %></h1>
+        <h4 class="dark-green-text">Overall positivity:</h4>
 
-          <h4 class="dark-green-text">Overall negativity:</h4>
-        </div>
-        <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
-          <h3 class="dark-green-text">This group's positivity levels</h3>
-          <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-          <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px") %>
-        </div>
+        <h4 class="dark-green-text">Overall negativity:</h4>
+      </div>
+      <div class="text-center col-xs-12 col-sm-6" style="padding: 0 5%;">
+        <h3 class="dark-green-text">This group's positivity levels</h3>
+        <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
+        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px") %>
       </div>
     </div>
   </div>
@@ -43,11 +41,22 @@
         </div>
       <% end %>
     </div>
-    <div class="slightly-padded text-center">
-      <% if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true %>
-        <%= link_to "Add team members", new_group_group_membership_path(group_id: @group.id), method: :get, class: "btn btn-brand-with-bg" %>
-      <% end %>
-    </div>
+    <% if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true %>
+      <div class="slightly-padded text-center">
+        <div class="row">
+          <div class="col-xs-6">
+            <div style="float: left;">
+              <%= link_to "Add team members", new_group_group_membership_path(group_id: @group.id), method: :get, class: "btn btn-brand-with-bg" %>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div style="float: right;">
+              <%= link_to "Delete team", group_path(id: @group.id), method: :delete, class: "btn btn-dangerous" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="wrapper padded text-center">
@@ -66,6 +75,8 @@
     </div>
   </div>
 </div>
+
+
 
 <%= content_for(:after_js) do %>
   <script>
