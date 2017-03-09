@@ -25,16 +25,17 @@
 }
 
 .card-team-members {
+  text-align: center;
   border-radius: 3px;
   background-color: white;
   box-shadow: 1px 1px 3px $gray;
   border: 1px solid $gray-lighter;
-  height: 100%;
-  margin: 20px;
-  width: 75%;
-  padding: 20px;
+  height: 190px;
+  margin: 10px 0px;
+  width: 100%;
+  // padding: 20px;
   .picture {
-    margin: 10px;
+    margin: 15px 0px 22px 0;
   }
 }
 
