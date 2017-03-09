@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="banner" style="background-image: linear-gradient(-45deg, rgba(30,70,102,0.7), rgba(30,100,70,0.7)), url(<%= asset_path '404.gif' %>);">
+    <div class="container">
+      <div class="banner-content">
+        <div class="padded">
+          <h1>404: Page not found</h1>
+        </div>
+        <div class="slightly-padded">
+          <%= link_to "Go back to the home page", root_path , class: "btn btn-home-page-large" %>
+        </div>
+        <div class="slightly-padded">
+          <% if !current_user.nil? %>
+            <%= link_to "Go to your dashboard", current_user_profile_path, class: "btn btn-home-page-large" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
