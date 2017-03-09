@@ -215,8 +215,14 @@
       $(tabSelector).removeClass('tab-content-hide');
 
       // next two lines are for setting the group graph width beacuse it was bugging
-      var parentWidth = $('.chart-border').width();
-      $('.highcharts-root').css("width", parentWidth);
+      //var parentWidth = $('.highcharts-background').width();
+      //var parentWidth = $('.highcharts-background').height();
+
+      //console.log("width = " + parentWidth);
+      //console.log("height = " + parentHeight);
+
+      //$('.highcharts-root').css("width", parentWidth);
+      //$('.highcharts-root').css("height", 300);
     });
 
     $(".team-tab").on("click", function(e){
