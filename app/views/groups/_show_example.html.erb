@@ -12,7 +12,7 @@
       <h5>Graph shows the positivity index calculated for each answer given in the group.</h5>
       <div class="chart-border">
         <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "250", width: "1000", colors: ["orange", "#999"]) %>
+        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "250", colors: ["orange", "#999"]) %>
       </div>
     </div>
   </div>
@@ -22,23 +22,15 @@
     <div class="col-xs-12 col-md-6 col-lg-4">
       <h4 class="dark-green-text">Happieness per Subject</h4>
 
-      <div class="chart-border">
         <%= column_chart [["Work Space", 3], ["Co-workers", 10], ["Challenges", 8], ["Work Load", 6 ]], colors: ["orange", "#999"]%>
-      </div>
     </div>
     <div class="col-xs-12 col-md-6 col-lg-4">
       <h4 class="dark-green-text">5 Happiest</h4>
-
-      <div class="chart-border">
         <%= column_chart [["Ciaran E.", 10], ["Pedro Rio.", 8], ["Diogo R.", 7], ["Filipe Paiva.", 3 ]], colors: ["#FFA5AF", "#999"]%>
-      </div>
     </div>
     <div class="col-xs-12 col-md-6 col-lg-4">
       <h4 class="dark-green-text">5 Bluest</h4>
-
-      <div class="chart-border">
         <%= column_chart [["Filipe Paiva.", 3 ], ["Diogo Rio.", 7], ["Pedro R.", 8], ["Ciaran E.", 10]], colors: ["#8BFEFF", "#999"]%>
-      </div>
     </div>
 
   </div>
@@ -100,9 +92,9 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="text-center">
-        <%= link_to "Questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-default", id: "open-questionnaire"%>
+        <%= link_to "Broadcast Questionnaire", "" ,class: "btn btn-default", id: "broadcast-questionnaire"%>
         <!-- if there is no convo_history, create one: -->
-        <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
+
         <!-- jquery for this at the bottom of this page-->
       </div>
     </div>
@@ -125,10 +117,11 @@
 
 
 
-      $('#open-questionnaire').on('click', function(event){
-        $('#open-questionnaire').hide();
-        $('#questionnaire').fadeIn("slow");
-        $('#answer-text','#q01').focus();
+      $('#broadcast-questionnaire').on('click', function(event){
+        console.log("yelo");
+        event.preventDefault();
+
+        <%= flash[:success] = "Welcome to the Sample App!"%> ;
       });
 
     });
