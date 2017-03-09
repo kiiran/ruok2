@@ -17,29 +17,29 @@ general_template_questions_hash = [
   TemplateQuestion.create(subject: "general", question_type: "neg", content: "Oh dear. How could you make things better?"),
   TemplateQuestion.create(subject: "general", question_type: "neg-solution", content: "Okey doke. Any more info you'd like to add?"),
 
-  TemplateQuestion.create(subject: "general", question_type: "pos", content: "Sounds things are going well overall. Is there any way to make things go even better?"),
+  TemplateQuestion.create(subject: "general", question_type: "pos", content: "Sounds like things are going well overall. How could things be even better?"),
   TemplateQuestion.create(subject: "general", question_type: "pos-solution", content: "Okey doke. Any other info you'd like to give me?"),
 ]
 
 family_template_questions_hash = [
   TemplateQuestion.create(subject: "family", question_type: "opening_question", content: "How's your family today?"),
-  TemplateQuestion.create(subject: "family", question_type: "neg", content: "Tell me more about what's bothering you at home?"),
-  TemplateQuestion.create(subject: "family", question_type: "pos", content: "Tell me more about what's great at home?"),
-  TemplateQuestion.create(subject: "family", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?"),
+  TemplateQuestion.create(subject: "family", question_type: "neg", content: "Tell me more about what's bothering you at home"),
+  TemplateQuestion.create(subject: "family", question_type: "pos", content: "Tell me more about what's great at home"),
+  TemplateQuestion.create(subject: "family", question_type: "pos-solution", content: "Ok, well, I'm here to listen. Any other comments?"),
 ]
 
 work_template_questions_hash = [
   TemplateQuestion.create(subject: "work", question_type: "opening_question", content: "How was work today?"),
-  TemplateQuestion.create(subject: "work", question_type: "neg", content: "Tell me more about what's bothering you at work?"),
-  TemplateQuestion.create(subject: "work", question_type: "pos", content: "Tell me more about what's great at work?"),
-  TemplateQuestion.create(subject: "work", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?"),
+  TemplateQuestion.create(subject: "work", question_type: "neg", content: "Tell me more about what's bothering you at work"),
+  TemplateQuestion.create(subject: "work", question_type: "pos", content: "Tell me more about what's great at work"),
+  TemplateQuestion.create(subject: "work", question_type: "pos-solution", content: "Ok, well, I'm here to listen. Any other comments?"),
 ]
 
 social_template_questions_hash = [
-  TemplateQuestion.create(subject: "social", question_type: "opening_question", content: "How was the social life today?"),
-  TemplateQuestion.create(subject: "social", question_type: "neg", content: "Tell me more about what's bothering you with your social life?"),
-  TemplateQuestion.create(subject: "social", question_type: "pos", content: "Tell me more about what's great with your social life?"),
-  TemplateQuestion.create(subject: "social", question_type: "pos-solution", content: "Ok, we I'm here to listen. Any other comments?"),
+  TemplateQuestion.create(subject: "social", question_type: "opening_question", content: "How was your social life today?"),
+  TemplateQuestion.create(subject: "social", question_type: "neg", content: "Tell me more about what's bothering you with your social life"),
+  TemplateQuestion.create(subject: "social", question_type: "pos", content: "Tell me more about what's great with your social life"),
+  TemplateQuestion.create(subject: "social", question_type: "pos-solution", content: "Ok, well, I'm here to listen. Any other comments?"),
 ]
 
 
