@@ -92,10 +92,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="text-center">
-        <%= link_to "Broadcast Questionnaire", "" ,class: "btn btn-default", id: "broadcast-questionnaire"%>
-        <!-- if there is no convo_history, create one: -->
-
-        <!-- jquery for this at the bottom of this page-->
+        <div class="btn btn-primary" id="send-q">Send Qestionnaire</div>
       </div>
     </div>
   </div>
@@ -115,13 +112,10 @@
   <script>
     $(document).ready(function() {
 
-
-
-      $('#broadcast-questionnaire').on('click', function(event){
-        console.log("yelo");
-        event.preventDefault();
-
-        <%= flash[:success] = "Welcome to the Sample App!"%> ;
+      // Content for questionnaire button (this should stay):
+      $("#send-q").on("click", function(){
+        $("#send-q").text("Sent Successfully!").removeClass("btn-primary");
+        $("#send-q").addClass("btn-default").css( "color", "green" );
       });
 
     });

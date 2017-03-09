@@ -7,6 +7,8 @@ class ConversationHistoriesController < ApplicationController
 
   def new
     # request.session_options[:id]
+    # last resource........ TO IMPROVE
+    sleep 1
     @ch = ConversationHistory.find(params[:conversation_history_id])
     @the_questions = @ch.questions.order(created_at: :asc)
 
@@ -15,6 +17,7 @@ class ConversationHistoriesController < ApplicationController
 
     @the_question_2 = Question.find(@the_questions[1]).content
     @the_answer_2 = Answer.find_by(question_id: @the_questions[1].id).content
+    # byebug
 
     @the_question_3 = Question.find(@the_questions[2]).content
     @the_answer_3 = Answer.find_by(question_id: @the_questions[2].id).content

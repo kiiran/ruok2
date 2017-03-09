@@ -14,6 +14,7 @@ class AnswersController < ApplicationController
     @qId = params[:question_number]
     # create a js file to help with rendering shit in the homepage:
 
+    # byebug
     respond_to do |format|
       format.js
     end
