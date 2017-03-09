@@ -17,7 +17,7 @@
       </a>
       <!-- The next chunk is for the Teams dropdown menu -->
       <div id="dropdown-menu" class="tab-content-hide">
-     <ul>
+        <ul>
           <% group_counter = 1 %>
           <% group_id_array = [] %>
           <% group_target_id_array = []%>
@@ -45,23 +45,22 @@
                 <% group_name_part_one = name_part_one.join(" ") %>
                 <% group_name_part_two = split_name.join(" ") %>
 
-              <!-- button for each group (with multiple line names)-->
-
+                <!-- button for each group (with multiple line names)-->
                 <a class="tab" data-target=<%=group_target%> href="#">
-                <i class='fa fa-arrow-right smaller hide-fa' aria-hidden="true"></i>
-                <%= group_name_part_one %>
-                <div style='padding-left: 54px;'> <%= group_name_part_two %></div>
+                  <i class='fa fa-arrow-right smaller hide-fa' aria-hidden="true"></i>
+                  <%= group_name_part_one %>
+                  <div style='padding-left: 54px;'> <%= group_name_part_two %></div>
+                </a>
 
                 <% group_id_array << group.id %>
                 <% group_target_id_array << "group-#{group_counter}" %>
 
               <% else %>
-
-              <!-- button for each group (with one line names)-->
+                <!-- button for each group (with one line names)-->
                 <a class="tab" data-target=<%=group_target%> href="#">
-                <i class='fa fa-arrow-right smaller hide-fa' aria-hidden="true"></i>
-                <%= group_name_part_one %>
-                <%= group.name %>
+                  <i class='fa fa-arrow-right smaller hide-fa' aria-hidden="true"></i>
+                  <%= group.name %>
+                </a>
 
                 <% group_id_array << group.id %>
                 <% group_target_id_array << "group-#{group_counter}" %>
@@ -75,10 +74,9 @@
             <a class="tab" data-target="#add-team" href="#">
               <i class="fa fa-plus smaller" aria-hidden="true"></i>
               Add a team
+            </a>
           </li>
         </ul>
-
-
       </div>
     </li>
     <li>
@@ -108,7 +106,7 @@
       <div class="text-center col-xs-12 col-sm-6">
         <h4 class="dark-text text-left">This is your positivity per question: </h4>
         <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%", colors: ["orange", "#999"], ) %>
+        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%", colors: ["orange", "#999"] ) %>
       </div>
     </div>
     <hr class="page-divider">
@@ -118,7 +116,7 @@
     <% total_replies = 0 %>
     <% current_user.groups.each do |group| %>
       <% total_team_members += group.group_memberships.count %>
-      <% total_replies += 0 %>
+      <% total_replies += ConversationHistory.where(group_id: group.id).count %>
     <% end %>
     <div class="row">
       <div class="col-xs-4">
