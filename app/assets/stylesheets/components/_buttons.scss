@@ -34,7 +34,8 @@
   transition: all 0.2s ease;
 }
 
-.btn-home-page-large {
+.btn-home-page-large,
+.btn-home-page-large-two {
   border: 2px white solid;
   padding: 11px 32px;
   font-size: 20px;
@@ -48,6 +49,14 @@
   color: white;
   transition: all ease 0.2s;
 }
+
+.btn-home-page-large-two:hover {
+  background-color: rgba(255,170,0,1);
+  color: white;
+  transition: all ease 0.2s;
+}
+
+
 
 .btn-brand {
   padding: 8px 20px;
