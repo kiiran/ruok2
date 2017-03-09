@@ -31,11 +31,15 @@
   </div>
 
   <div class="row">
-      <% @group.users.each do |user| %>
+    <% @group.users.each do |user| %>
       <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
         <div class="card-team-members">
           <div class="tiny-link">
-            <%= link_to "x", group_group_membership_path(@group.id, user), method: :delete %>
+            <% if user.id != current_user.id %>
+              <%= link_to "x", group_group_membership_path(@group.id, user), method: :delete %>
+            <% else %>
+              <%= link_to "x", "#" %>
+            <% end %>
           </div>
           <div class="picture">
             <% if !user.photo.nil? %>
@@ -57,20 +61,31 @@
 
   <hr class="page-divider">
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="container text-center">
-      <% if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true %>
-        <%= link_to "Add team members", new_group_group_membership_path(group_id: @group.id), method: :get, class: "btn btn-brand-with-bg" %>
-        <%= link_to "Delete team", group_path(id: @group.id), method: :delete, class: "btn btn-dangerous" %>
-      <% end %>
-
-      <%= link_to "Questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-default", id: "open-questionnaire"%>
-      <!-- if there is no convo_history, create one: -->
-      <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
-      <!-- jquery for this at the bottom of this page-->
+  <div class="row">
+    <% if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true %>
+      <div class="col-xs-6">
+        <div style="float: left">
+          <%= link_to "Add team members", new_group_group_membership_path(group_id: @group.id), method: :get, class: "btn btn-brand-with-bg" %>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div style="float: right">
+          <%= link_to "Delete team", group_path(id: @group.id), method: :delete, class: "btn btn-dangerous" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <%= link_to "Questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-default", id: "open-questionnaire"%>
+        <!-- if there is no convo_history, create one: -->
+        <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
+        <!-- jquery for this at the bottom of this page-->
+      </div>
     </div>
   </div>
+
   <div class="row">
     <div class="col-xs-12">
       <div class="wrapper" id="questionnaire" style="display: none; width: 100%;">
@@ -78,7 +93,6 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 
 

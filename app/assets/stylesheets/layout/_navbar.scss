@@ -58,6 +58,17 @@
   right: 2%;
 }
 
+.navbar-wagon-item > .dropdown2 {
+  position: absolute;
+  top: 3px;
+  right: 70%;
+  width: 120px;
+}
+
+#second-dropdown {
+  right: 16px;
+}
+
 .fa-bars {
   padding-top: 23px;
 }
@@ -69,7 +80,9 @@
   font-weight: bold;
   border-bottom: 2px solid transparent;
   transition: border-bottom 0.3s;
+  text-decoration: none;
 }
+
 .navbar-wagon-link:hover {
   color: $brand-color;
   text-decoration: none;
