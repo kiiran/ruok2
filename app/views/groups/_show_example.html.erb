@@ -100,10 +100,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="text-center">
-        <%= link_to "Questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-default", id: "open-questionnaire"%>
-        <!-- if there is no convo_history, create one: -->
-        <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
-        <!-- jquery for this at the bottom of this page-->
+        <div class="btn btn-primary" id="send-q">Send Qestionnaire</div>
       </div>
     </div>
   </div>
@@ -123,12 +120,10 @@
   <script>
     $(document).ready(function() {
 
-
-
-      $('#open-questionnaire').on('click', function(event){
-        $('#open-questionnaire').hide();
-        $('#questionnaire').fadeIn("slow");
-        $('#answer-text','#q01').focus();
+      // Content for questionnaire button (this should stay):
+      $("#send-q").on("click", function(){
+        $("#send-q").text("Sent Successfully!").removeClass("btn-primary");
+        $("#send-q").addClass("btn-default").css( "color", "green" );
       });
 
     });
