@@ -16,7 +16,7 @@
       <h5>Graph shows the positivity index calculated for each answer given in the group.</h5>
       <div class="chart-border">
         <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%") %>
+        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "250", width: "1000") %>
       </div>
     </div>
   </div>
