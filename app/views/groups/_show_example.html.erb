@@ -30,7 +30,6 @@
     </div>
   </div>
 
-
   <div class="row">
       <% @group.users.each do |user| %>
       <div class="col-xs-12 col-md-4 col-lg-2">
@@ -41,8 +40,8 @@
           <div class="picture">
             <% if !user.photo.nil? %>
               <%= cl_image_tag current_user.photo.path, width: 100, height: 100, gravity: :face, crop: :fill, class: "avatar-medium" %>
-            <% elsif !current_user.facebook_picture_url.nil? %>
-              <%= image_tag current_user.facebook_picture_url, class: "avatar-medium" %>
+            <% elsif !user.facebook_picture_url.nil? %>
+              <%= image_tag user.facebook_picture_url, class: "avatar-medium" %>
             <% else %>
               <%= image_tag 'default-member-image.png', class: "avatar-medium" %>
             <% end %>
@@ -58,19 +57,18 @@
 
   <hr class="page-divider">
 
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="container text-center">
-        <% if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true %>
-          <%= link_to "Add team members", new_group_group_membership_path(group_id: @group.id), method: :get, class: "btn btn-brand-with-bg" %>
-          <%= link_to "Delete team", group_path(id: @group.id), method: :delete, class: "btn btn-dangerous" %>
-        <% end %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="container text-center">
+      <% if @group.group_memberships.where(user_id: current_user.id, group_id: @group.id).take.admin == true %>
+        <%= link_to "Add team members", new_group_group_membership_path(group_id: @group.id), method: :get, class: "btn btn-brand-with-bg" %>
+        <%= link_to "Delete team", group_path(id: @group.id), method: :delete, class: "btn btn-dangerous" %>
+      <% end %>
 
-        <%= link_to "Questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-default", id: "open-questionnaire"%>
-        <!-- if there is no convo_history, create one: -->
-        <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
-        <!-- jquery for this at the bottom of this page-->
-      </div>
+      <%= link_to "Questionnaire", group_current_user_form_path(group_id: @group.id), class: "btn btn-default", id: "open-questionnaire"%>
+      <!-- if there is no convo_history, create one: -->
+      <% @new_convo_history = ConversationHistory.create(user: current_user, group: @group) %>
+      <!-- jquery for this at the bottom of this page-->
     </div>
   </div>
   <div class="row">
