@@ -6,6 +6,7 @@ class ConversationHistoriesController < ApplicationController
   end
 
   def new
+    request.session_options[:id]
     @ch = ConversationHistory.find(params["conversation_history_id"])
     @the_questions = @ch.questions
 
