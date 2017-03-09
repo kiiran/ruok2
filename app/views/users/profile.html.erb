@@ -103,8 +103,6 @@
         <h4 class="dark-green-text">Welcome to your dashboard</h4>
         <p>From here, you can manage your teams, data and other settings</p>
 
-        <div class="btn btn-primary" id="send-q">Send Qestionnaire</div>
-
       </div>
       <div class="text-center col-xs-12 col-sm-6">
         <h4 class="dark-text text-left">This is your positivity per question: </h4>
@@ -233,12 +231,6 @@
       $("#dropdown-menu").toggleClass('tab-content-hide');
       $(".fa-caret-down").toggleClass('tab-content-hide');
       $(".fa-caret-up").toggleClass('tab-content-hide');
-    });
-
-    // Content for questionnaire button:
-    $("#send-q").on("click", function(){
-      $("#send-q").text("Sent Successfully!").removeClass("btn-primary");
-      $("#send-q").addClass("btn-default").css( "color", "green" );
     });
 
   });
