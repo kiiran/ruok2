@@ -6,8 +6,8 @@ class ConversationHistoriesController < ApplicationController
   end
 
   def new
-    request.session_options[:id]
-    @ch = ConversationHistory.find(params["conversation_history_id"])
+    # request.session_options[:id]
+    @ch = ConversationHistory.find(params[:conversation_history_id])
     @the_questions = @ch.questions.order(created_at: :asc)
 
     @the_question_1 = Question.find(@the_questions[0]).content
@@ -18,7 +18,6 @@ class ConversationHistoriesController < ApplicationController
 
     @the_question_3 = Question.find(@the_questions[2]).content
     @the_answer_3 = Answer.find_by(question_id: @the_questions[2].id).content
-
 
   end
 
