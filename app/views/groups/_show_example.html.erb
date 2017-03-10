@@ -16,25 +16,24 @@
       </div>
     </div>
   </div>
+  <% if @group.group_memberships.count > 1 %>
+    <div class="row">
+      <!-- group stats and name here -->
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <h4 class="dark-green-text">Happiness by Subject</h4>
 
-  <div class="row">
-    <!-- group stats and name here -->
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <h4 class="dark-green-text">Happiness by Subject</h4>
-
-        <%= column_chart [["Work Space", 3], ["Co-workers", 10], ["Challenges", 8], ["Work Load", 6 ]], colors: ["orange", "#999"]%>
+          <%= column_chart [["Work Space", 3], ["Co-workers", 10], ["Challenges", 8], ["Work Load", 6 ]], colors: ["orange", "#999"]%>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <h4 class="dark-green-text">Happiest Team Members</h4>
+          <%= column_chart [["Ciaran E.", 10], ["Pedro Rio.", 8], ["Diogo R.", 7], ["Filipe Paiva.", 3 ]], colors: ["#FFA5AF", "#999"]%>
+      </div>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <h4 class="dark-green-text">Unhappiest Team Members</h4>
+          <%= column_chart [["Filipe Paiva.", 3 ], ["Diogo Rio.", 7], ["Pedro R.", 8], ["Ciaran E.", 10]], colors: ["#8BFEFF", "#999"]%>
+      </div>
     </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <h4 class="dark-green-text">5 Happiest</h4>
-        <%= column_chart [["Ciaran E.", 10], ["Pedro Rio.", 8], ["Diogo R.", 7], ["Filipe Paiva.", 3 ]], colors: ["#FFA5AF", "#999"]%>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-      <h4 class="dark-green-text">5 Bluest</h4>
-        <%= column_chart [["Filipe Paiva.", 3 ], ["Diogo Rio.", 7], ["Pedro R.", 8], ["Ciaran E.", 10]], colors: ["#8BFEFF", "#999"]%>
-    </div>
-
-  </div>
-
+  <% end %>
   <hr class="page-divider">
 
   <div class="row">
@@ -92,8 +91,8 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <div class="text-center">
-          <div class="btn btn-primary" id="send-q">Send Questionnaire</div>
+        <div class="text-center padded">
+          <div class="btn btn-primary" id="send-q-<%= @group.id %>">Send Questionnaire</div>
         </div>
       </div>
     </div>
@@ -115,9 +114,9 @@
     $(document).ready(function() {
 
       // Content for questionnaire button (this should stay):
-      $("#send-q").on("click", function(){
-        $("#send-q").text("Sent Successfully!").removeClass("btn-primary");
-        $("#send-q").addClass("btn-default").css( "color", "green" );
+      $("#send-q-<%= @group.id %>").on("click", function(){
+        $("#send-q-<%= @group.id %>").text("Sent Successfully!").removeClass("btn-primary");
+        $("#send-q-<%= @group.id %>").addClass("btn-default").css( "color", "green" );
       });
 
     });
