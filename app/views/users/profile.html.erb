@@ -107,7 +107,7 @@
       <div class="text-center col-xs-12 col-sm-6">
         <h4 class="dark-text text-left">This is your positivity per question: </h4>
         <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%", colors: ["orange", "#999"] ) %>
+        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "300px", width: "100%", colors: ["orange", "#999"], max: 1 ) %>
       </div>
     </div>
     <hr class="page-divider">
