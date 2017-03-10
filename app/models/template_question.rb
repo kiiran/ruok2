@@ -14,7 +14,7 @@ class TemplateQuestion < ApplicationRecord
   end
 
   def self.sample_of_question_type(question_type)
-    TemplateQuestion.where(question_type: question_type).sample
+    TemplateQuestion.where(question_type: question_type).where(subject: "general").sample
   end
 end
 
