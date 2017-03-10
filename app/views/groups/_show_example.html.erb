@@ -8,11 +8,11 @@
   <div class="row">
     <!-- group stats and name here -->
     <div class="col-xs-12">
-      <h4 class="dark-green-text">Group's Positivity Chart</h4>
-      <h5>Graph shows the positivity index calculated for each answer given in the group.</h5>
+      <h4 class="dark-green-text">Team's Positivity Chart</h4>
+      <h5>Graph shows the positivity index calculated for each answer given in the team.</h5>
       <div class="chart-border">
         <%= javascript_include_tag "//code.highcharts.com/highcharts.js", "chartkick" %>
-        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "250", colors: ["orange", "#999"]) %>
+        <%= line_chart(Answer.group(:question_id).sum(:pos), height: "250px", max: 1, colors: ["orange", "#999"]) %>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
   <div class="row">
     <!-- group stats and name here -->
     <div class="col-xs-12 col-md-6 col-lg-4">
-      <h4 class="dark-green-text">Happieness per Subject</h4>
+      <h4 class="dark-green-text">Happiness per Subject</h4>
 
         <%= column_chart [["Work Space", 3], ["Co-workers", 10], ["Challenges", 8], ["Work Load", 6 ]], colors: ["orange", "#999"]%>
     </div>
@@ -40,7 +40,7 @@
   <div class="row">
     <div class="col-xs-12">
       <h3 class="dark-green-text">Team members</h3>
-      <h5>Here are all the people that submit questionnaires to the group. To add a new member and follow his/her mood just click the bottom below.</h5>
+      <h5>Here are all the people that submit questionnaires to the group. To add a new member and follow his/her mood just click the button below.</h5>
     </div>
   </div>
 
