@@ -1,6 +1,66 @@
+<!-- Mobile Sidebar -->
+<div class="mobile-dash-nav hidden-md hidden-lg" id="mobile-sidebar">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-3 text-center">
+        <a class="tab active" data-target="#overview" href="#">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="col-xs-3 text-center">
+        <a class="team-tab" data-target="#your-teams" href="#">
+          <i class="fa fa-rocket" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="col-xs-3 text-center">
+        <a class="tab" data-target="#your-stats" href="#">
+          <i class="fa fa-area-chart" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="col-xs-3 text-center">
+        <a class="tab" data-target="#settings" href="#">
+          <i class="fa fa-sliders" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+<div id="dropdown-menu-mobile" class="tab-content-hide">
+  <div class="row">
+    <% group_counter = 1 %>
+    <% group_id_array = [] %>
+    <% group_target_id_array = []%>
+
+    <% current_user.groups.each do |group| %>
+    <% group_target = "#group-#{group_counter}"%>
+      <div class="col-xs-6">
+        <div class="slightly-padded text-center">
+          <!-- button for each group (with one line names)-->
+          <a class="tab" data-target=<%=group_target%> href="#">
+            <%= group.name %>
+          </a>
+          <% group_id_array << group.id %>
+          <% group_target_id_array << "group-#{group_counter}" %>
+          <% group_counter += 1 %>
+        </div>
+        <hr class="page-divider-white">
+      </div>
+    <% end %>
+
+    <div class="col-xs-6">
+      <div class="slightly-padded text-center">
+        <a class="tab" data-target="#add-team" href="#">
+          <i class="fa fa-plus smaller" aria-hidden="true"></i>
+          Add a team
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
 
 <!-- Sidebar -->
-<div id="sidebar">
+<div id="sidebar" class="hidden-xs hidden-sm">
   <ul>
     <li>
       <a class="tab active" data-target="#overview" href="#">
@@ -77,7 +137,6 @@
             </a>
           </li>
         </ul>
-      </div>
     </li>
     <li>
       <a class="tab" data-target="#your-stats" href="#">
@@ -94,8 +153,10 @@
   </ul>
 </div>
 
+
+
 <!-- Main content -->
-<div class="dashboard">
+<div class="dashboard" id="dashboard">
   <div class="tab-container" id="overview">
     <div class="row">
       <div class="col-xs-12 col-sm-6">
@@ -239,10 +300,25 @@
     $(".team-tab").on("click", function(e){
       e.preventDefault();
       $("#dropdown-menu").toggleClass('tab-content-hide');
+      $("#dropdown-menu-mobile").toggleClass('tab-content-hide');
       $(".fa-caret-down").toggleClass('tab-content-hide');
       $(".fa-caret-up").toggleClass('tab-content-hide');
     });
 
   });
+
+  $(window).on('resize', function() {
+    if($(window).width() > 992) {
+      $('#dashboard').addClass('dashboard');
+      $('#dashboard').removeClass('dashboard-mobile');
+      $('#dropdown-menu-mobile').addClass('hidden-md');
+      $('#dropdown-menu').removeClass('hidden-xs');
+    }else{
+      $('#dashboard').addClass('dashboard-mobile');
+      $('#dashboard').removeClass('dashboard');
+      $('#dropdown-menu').addClass('hidden-xs');
+      $('#dropdown-menu-mobile').removeClass('hidden-md');
+    }
+  })
   <% end %>
 <% end %>
